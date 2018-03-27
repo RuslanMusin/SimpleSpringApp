@@ -3,7 +3,10 @@ package database.dao.postgresDao;
 import database.dao.IDao.ICountryDao;
 import database.dao.abstractDao.AbstractDao;
 import database.entity.Country;
+import database.entity.Right;
 import database.exceptions.DbException;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import utils.Const;
 import utils.DbWrapper;
 
@@ -11,9 +14,11 @@ import utils.DbWrapper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+@Repository
 public class CountryDao extends AbstractDao<Country> implements ICountryDao{
 
     private final String TABLE_NAME = Const.DATABASE + "." +
@@ -22,10 +27,6 @@ public class CountryDao extends AbstractDao<Country> implements ICountryDao{
     private final String COL_ID = "country_id";
 
     private final String COL_NAME = "name";
-
-    public CountryDao(Connection connection) {
-        super(connection);
-    }
 
     @Override
     public String getSelectQuery() {
@@ -43,9 +44,9 @@ public class CountryDao extends AbstractDao<Country> implements ICountryDao{
     }
 
     @Override
-    public String getReadQuery(String id) {
+    public String getReadQuery() {
 
-        return getSelectQuery() + " WHERE " + COL_ID + " = " + id + ";";
+        return getSelectQuery() + " WHERE " + COL_ID + " = ? ;";
     }
 
     @Override
@@ -71,45 +72,35 @@ public class CountryDao extends AbstractDao<Country> implements ICountryDao{
         return "SELECT * FROM getmoviecountries(" + movieId + ")";
     }
 
-
     @Override
-    protected List<Country> parseResultSet(ResultSet rs) throws DbException {
-        LinkedList<Country> result = new LinkedList<>();
-        try {
-            while (rs.next()) {
+    protected RowMapper<Country> getRowMapper() {
+        return new RowMapper<Country>() {
+
+            @Override
+            public Country mapRow(ResultSet rs, int i) throws SQLException {
                 Country country = new Country();
                 country.setId(rs.getInt(COL_ID));
                 country.setName(rs.getString(COL_NAME));
-                result.add(country);
+
+                return country;
             }
-        } catch (Exception e) {
-            throw new DbException(e);
-        }
-        return result;
+        };
     }
 
     @Override
-    protected void prepareStatementForInsert(PreparedStatement statement, Country country) throws DbException {
-        try {
-            int i = 1;
-            statement.setString(i, country.getName());
-        } catch (Exception e) {
-            throw new DbException(e);
-        }
+    protected void prepareStatementForInsert(PreparedStatement statement, Country country) throws SQLException {
+        int i = 1;
+        statement.setString(i, country.getName());
     }
 
     @Override
-    protected void prepareStatementForUpdate(PreparedStatement statement, Country country) throws DbException {
-        try {
-            int i = 1;
-            statement.setString(i++, country.getName());
-            statement.setInt(i, country.getId());
-        } catch (Exception e) {
-            throw new DbException(e);
-        }
+    protected void prepareStatementForUpdate(PreparedStatement statement, Country country) throws SQLException {
+        int i = 1;
+        statement.setString(i++, country.getName());
+        statement.setInt(i, country.getId());
     }
 
-    public List<Country> findCountriesByName(String queryCountry) throws DbException {
+   /* public List<Country> findCountriesByName(String queryCountry) throws DbException {
         List<Country> list;
         String sql = getSelectCountriesByName(queryCountry);
         try (PreparedStatement statement = DbWrapper.getConnection().prepareStatement(sql)) {
@@ -131,5 +122,5 @@ public class CountryDao extends AbstractDao<Country> implements ICountryDao{
             throw new DbException(e);
         }
         return list;
-    }
+    }*/
 }

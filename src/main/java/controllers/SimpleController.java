@@ -2,6 +2,7 @@ package controllers;
 
 import database.entity.Country;
 import database.entity.User;
+import database.entity.dop.ChangeForm;
 import database.entity.dop.UserForm;
 import database.exceptions.DbException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import services.DbService;
-import services.UserFormValidator;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -52,9 +50,7 @@ public class SimpleController {
     public String enter(@ModelAttribute("userForm") @Valid UserForm userForm,
                         BindingResult bindingResult,Model model) throws DbException {
         if (bindingResult.hasErrors()) {
-            for(ObjectError error:bindingResult.getAllErrors()) {
-                System.out.println("error : " + error.toString());
-            }
+            printErrors(bindingResult);
 
             return "index";
         } else {
@@ -117,25 +113,25 @@ public class SimpleController {
     }
 
     @RequestMapping(value = "/change-personal",method = RequestMethod.POST)
-    public String changePersonal(@ModelAttribute("userForm") @Valid UserForm userForm,
+    public String changePersonal(@ModelAttribute("userForm") @Valid ChangeForm changeForm,
                         BindingResult bindingResult,Model model) throws DbException {
         System.out.println("changePersonalPOST");
         if (bindingResult.hasErrors()) {
+            printErrors(bindingResult);
+
             return "user/change_personal";
         } else {
 
-            System.out.println("userForm:\n");
-            System.out.println(userForm.getCountryId());
-            System.out.println(userForm.getUsername());
+            System.out.println("loginForm:\n");
+            System.out.println(changeForm.getCountryId());
+            System.out.println(changeForm.getUsername());
 
             User user = (User) session.getAttribute("user");
-            user.setUsername(userForm.getUsername());
-            user.setCountry(userForm.getCountryId());
-            user.setGender(userForm.getGender());
 
-            model.addAttribute("user",user);
+            databaseService.updateUser(user, changeForm);
 
-           databaseService.updateUser(user);
+            session.setAttribute("user",user);
+
         }
         return "redirect:/personal";
     }
@@ -145,12 +141,12 @@ public class SimpleController {
         System.out.println("changePersonalGET");
 
         User user = (User) session.getAttribute("user");
-        UserForm userForm = new UserForm();
-        userForm.setUsername(user.getUsername());
-        userForm.setCountryId(user.getCountry().getId());
-        userForm.setGender(user.getGender());
+        ChangeForm changeForm = new ChangeForm();
+        changeForm.setUsername(user.getUsername());
+        changeForm.setCountryId(user.getCountry().getId());
+        changeForm.setGender(user.getGender());
 
-        model.addAttribute("userForm",userForm);
+        model.addAttribute("userForm", changeForm);
 
         List<Country> countries = databaseService.findAllCountries();
 
@@ -175,6 +171,12 @@ public class SimpleController {
         databaseService.deleteUser(user.getId());
 
         return "redirect:/";
+    }
+
+    private void printErrors(BindingResult bindingResult){
+        for(ObjectError error:bindingResult.getAllErrors()) {
+            System.out.println("error : " + error.toString());
+        }
     }
 
 }

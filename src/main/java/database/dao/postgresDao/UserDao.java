@@ -6,10 +6,16 @@ import database.entity.Country;
 import database.entity.Right;
 import database.entity.User;
 import database.exceptions.DbException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import utils.Const;
 import utils.DbWrapper;
 
 
+import javax.sql.DataSource;
+import java.awt.print.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +23,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+@Repository
 public class UserDao extends AbstractDao<User> implements IUserDao {
 
     private final String TABLE_NAME = Const.DATABASE + "." +
@@ -44,10 +51,6 @@ public class UserDao extends AbstractDao<User> implements IUserDao {
     private final String COL_COUNTRY = "name";
     private final String COL_RIGHT = "right_name";
 
-    public UserDao(Connection connection) {
-        super(connection);
-    }
-
     @Override
     public String getSelectQuery() {
 
@@ -67,8 +70,9 @@ public class UserDao extends AbstractDao<User> implements IUserDao {
     }
 
     @Override
-    public String getReadQuery(String id) {
-        return getSelectQuery() + " WHERE " + COL_ID + " = " + id + ";";
+    public String getReadQuery() {
+
+        return getSelectQuery() + " WHERE " + COL_ID + " = ? ;";
     }
 
     @Override
@@ -110,10 +114,11 @@ public class UserDao extends AbstractDao<User> implements IUserDao {
     }
 
     @Override
-    protected List<User> parseResultSet(ResultSet rs) throws DbException {
-        LinkedList<User> result = new LinkedList<>();
-        try {
-            while (rs.next()) {
+    protected RowMapper<User> getRowMapper() {
+        return new RowMapper<User>() {
+
+            @Override
+            public User mapRow(ResultSet rs, int i) throws SQLException {
                 User user = new User();
                 user.setId(rs.getInt(COL_ID));
                 user.setEmail(rs.getString(COL_EMAIL));
@@ -122,46 +127,70 @@ public class UserDao extends AbstractDao<User> implements IUserDao {
                 user.setGender(rs.getString(COL_GENDER));
                 user.setRights(new Right(rs.getInt(COL_RIGHT_ID),rs.getString(COL_RIGHT)));
                 user.setCookieId(rs.getString(COL_COOKIE_ID));
-                result.add(user);
+
+                return user;
             }
+        };
+    }
+
+    @Override
+    protected void prepareStatementForInsert(PreparedStatement statement, User user) throws SQLException {
+        int i = 1;
+        statement.setString(i++, user.getEmail());
+        statement.setString(i++, user.getPassword());
+        statement.setString(i++, user.getUsername());
+        statement.setInt(i++, user.getCountry().getId());
+        statement.setString(i++, user.getGender());
+        statement.setString(i, user.getCookieId());
+    }
+
+    @Override
+    protected void prepareStatementForUpdate(PreparedStatement statement, User user) throws SQLException {
+        int i = 1;
+        statement.setString(i++, user.getUsername());
+        statement.setInt(i++, user.getCountry().getId());
+        statement.setString(i++, user.getGender());
+        statement.setInt(i++, user.getRights().getId());
+        statement.setInt(i, user.getId());
+    }
+
+    public User findByEmail(String email) throws DbException {
+        String sql = getSelectByEmail();
+        User user = jdbcTemplateObject.queryForObject(sql,
+                new Object[]{email},getRowMapper());
+        /*try (PreparedStatement statement = DbWrapper.getConnection().prepareStatement(sql)) {
+            statement.setString(1,email);
+            ResultSet rs = statement.executeQuery();
+            List<User> list = parseResultSet(rs);
+            if ((list == null) || (list.size() != 1)) {
+                throw new DbException("findByEmailExПользователь не найден по email.");
+            }
+            user = list.iterator().next();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new DbException(e);
-        }
-        return result;
+        }*/
+        return user;
     }
 
-    @Override
-    protected void prepareStatementForInsert(PreparedStatement statement, User user) throws DbException {
-        try {
-            int i = 1;
-            statement.setString(i++, user.getEmail());
-            statement.setString(i++, user.getPassword());
-            statement.setString(i++, user.getUsername());
-            statement.setInt(i++, user.getCountry().getId());
-            statement.setString(i++, user.getGender());
-            statement.setString(i, user.getCookieId());
+    /*public User findByCookieId(String cookieId) throws DbException {
+        String sql = getSelectByCookieId();
+        User user;
+        try (PreparedStatement statement = DbWrapper.getConnection().prepareStatement(sql)) {
+            statement.setString(1,cookieId);
+            ResultSet rs = statement.executeQuery();
+            List<User> list = parseResultSet(rs);
+            if ((list == null) || (list.size() != 1)) {
+                throw new DbException("findByCookieIdEx");
+            }
+            user = list.iterator().next();
         } catch (SQLException e) {
             throw new DbException(e);
         }
-    }
+        return user;
+    }*/
 
-    @Override
-    protected void prepareStatementForUpdate(PreparedStatement statement, User user) throws DbException {
-        try {
-            int i = 1;
-            statement.setString(i++, user.getUsername());
-            statement.setInt(i++, user.getCountry().getId());
-            statement.setString(i++, user.getGender());
-            statement.setInt(i++, user.getRights().getId());
-            statement.setInt(i, user.getId());
-        } catch (SQLException e) {
-            throw new DbException(e);
-        }
-    }
-
-
-    public boolean findCookieIdMatch(String cookieId) throws DbException {
+   /* public boolean findCookieIdMatch(String cookieId) throws DbException {
         String sql = getSelectCookieId(cookieId);
         try (PreparedStatement statement = DbWrapper.getConnection().prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();
@@ -185,46 +214,9 @@ public class UserDao extends AbstractDao<User> implements IUserDao {
             throw new DbException(e);
         }
         return false;
-    }
+    }*/
 
-
-
-    public User findByCookieId(String cookieId) throws DbException {
-        String sql = getSelectByCookieId();
-        User user;
-        try (PreparedStatement statement = DbWrapper.getConnection().prepareStatement(sql)) {
-            statement.setString(1,cookieId);
-            ResultSet rs = statement.executeQuery();
-            List<User> list = parseResultSet(rs);
-            if ((list == null) || (list.size() != 1)) {
-                throw new DbException("findByCookieIdEx");
-            }
-            user = list.iterator().next();
-        } catch (SQLException e) {
-            throw new DbException(e);
-        }
-        return user;
-    }
-
-    public User findByEmail(String email) throws DbException {
-        String sql = getSelectByEmail();
-        User user;
-        try (PreparedStatement statement = DbWrapper.getConnection().prepareStatement(sql)) {
-            statement.setString(1,email);
-            ResultSet rs = statement.executeQuery();
-            List<User> list = parseResultSet(rs);
-            if ((list == null) || (list.size() != 1)) {
-                throw new DbException("findByEmailExПользователь не найден по email.");
-            }
-            user = list.iterator().next();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            throw new DbException(e);
-        }
-        return user;
-    }
-
-    public String findPassword(String email) throws DbException {
+    /*public String findPassword(String email) throws DbException {
         String password = null;
         String sql = getSelectPassword();
         try (PreparedStatement statement = DbWrapper.getConnection().prepareStatement(sql)) {
@@ -237,5 +229,5 @@ public class UserDao extends AbstractDao<User> implements IUserDao {
             throw new DbException(e);
         }
         return password;
-    }
+    }*/
 }

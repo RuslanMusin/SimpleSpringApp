@@ -2,17 +2,22 @@ package database.dao.postgresDao;
 
 import database.dao.IDao.IRightDao;
 import database.dao.abstractDao.AbstractDao;
+import database.entity.Country;
 import database.entity.Right;
 
 import database.exceptions.DbException;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import utils.Const;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+@Repository
 public class RightDao extends AbstractDao<Right> implements IRightDao{
 
     private final String TABLE_NAME = Const.DATABASE + "." +
@@ -21,10 +26,6 @@ public class RightDao extends AbstractDao<Right> implements IRightDao{
     private final String COL_ID = "right_id";
 
     private final String COL_NAME = "right_name";
-
-    public RightDao(Connection connection) {
-        super(connection);
-    }
 
     @Override
     public String getSelectQuery() {
@@ -42,9 +43,9 @@ public class RightDao extends AbstractDao<Right> implements IRightDao{
     }
 
     @Override
-    public String getReadQuery(String id) {
+    public String getReadQuery() {
 
-        return getSelectQuery() + " WHERE " + COL_ID + " = " + id + ";";
+        return getSelectQuery() + " WHERE " + COL_ID + " = ? ;";
     }
 
     @Override
@@ -61,38 +62,31 @@ public class RightDao extends AbstractDao<Right> implements IRightDao{
     }
 
     @Override
-    protected List<Right> parseResultSet(ResultSet rs) throws DbException {
-        LinkedList<Right> result = new LinkedList<>();
-        try {
-            while (rs.next()) {
+    protected RowMapper<Right> getRowMapper() {
+        return new RowMapper<Right>() {
+
+            @Override
+            public Right mapRow(ResultSet rs, int i) throws SQLException {
                 Right right = new Right();
                 right.setId(rs.getInt(COL_ID));
                 right.setName(rs.getString(COL_NAME));
-                result.add(right);
+
+                return right;
             }
-        } catch (Exception e) {
-            throw new DbException(e);
-        }
-        return result;
+        };
     }
 
     @Override
-    protected void prepareStatementForInsert(PreparedStatement statement, Right right) throws DbException {
-        try {
+    protected void prepareStatementForInsert(PreparedStatement statement,
+                                             Right right) throws SQLException {
             int i = 1;
             statement.setString(i, right.getName());
-        } catch (Exception e) {
-            throw new DbException(e);
-        }
     }
 
     @Override
-    protected void prepareStatementForUpdate(PreparedStatement statement, Right right) throws DbException {
-        try {
+    protected void prepareStatementForUpdate(PreparedStatement statement,
+                                             Right right) throws SQLException {
             int i = 1;
             statement.setString(i, right.getName());
-        } catch (Exception e) {
-            throw new DbException(e);
-        }
     }
 }

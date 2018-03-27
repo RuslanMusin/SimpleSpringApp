@@ -3,11 +3,12 @@ package database.dao.IDao;
 import database.dao.abstractDao.GenericDao;
 import database.entity.User;
 import database.exceptions.DbException;
+import org.springframework.stereotype.Repository;
 
-
+@Repository
 public interface IUserDao extends GenericDao<User> {
 
-    public String getSelectByCookieId();
+   /* public String getSelectByCookieId();
 
     public String getSelectByEmail() ;
 
@@ -23,7 +24,7 @@ public interface IUserDao extends GenericDao<User> {
 
     public User findByCookieId(String cookieId) throws DbException ;
 
-    public User findByEmail(String email) throws DbException;
+    public String findPassword(String email) throws DbException ;*/
 
-    public String findPassword(String email) throws DbException ;
+    public User findByEmail(String email) throws DbException;
 }

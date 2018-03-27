@@ -1,14 +1,9 @@
 package database.entity;
 
 
-import database.dao.postgresDao.CountryDao;
-import database.dao.postgresDao.RightDao;
-import database.entity.dop.UserForm;
-import database.exceptions.DbException;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
-import utils.DbWrapper;
 import utils.validators.GenderConstraint;
 
 
@@ -52,13 +47,13 @@ public class User implements Identified,Serializable {
     public User() {
     }
 
-    public User(UserForm userForm) throws DbException {
+    /*public User(UserForm userForm) throws DbException {
         this.username = userForm.getUsername();
         this.email = userForm.getEmail();
         this.password = userForm.getPassword();
         this.gender = userForm.getGender();
         setCountry(userForm.getCountryId());
-    }
+    }*/
 
     @Override
     public boolean equals(Object obj) {
@@ -70,13 +65,13 @@ public class User implements Identified,Serializable {
         return false;
     }
 
-    public User(String email, String password, String username, Integer countryId, String gender) throws DbException {
+   /* public User(String email, String password, String username, Integer countryId, String gender) throws DbException {
         this.email = email;
         this.username = username;
         this.password = password;
         setCountry(countryId);
         this.gender = gender;
-    }
+    }*/
 
 
 
@@ -100,14 +95,14 @@ public class User implements Identified,Serializable {
         this.country = country;
     }
 
-    public void setCountry(Integer countryId) throws DbException {
+   /* public void setCountry(Integer countryId) throws DbException {
         try {
-            this.country = new CountryDao(DbWrapper.getConnection()).find(countryId);
+            this.country = dbService.findCountry(countryId);
         }catch (DbException ex){
             throw new DbException("Страна пользователя не найдена в БД(ошибка на сервере)");
         }
 
-    }
+    }*/
 
     public String getGender() {
         return gender;
@@ -153,13 +148,13 @@ public class User implements Identified,Serializable {
         this.rights = rights;
     }
 
-    public void setRights(Integer rightsId) {
+    /*public void setRights(Integer rightsId) {
 
         try {
-            this.rights = new RightDao(DbWrapper.getConnection()).find(rightsId);
+            this.rights = dbService.findRights(rightsId);
         } catch (DbException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
 

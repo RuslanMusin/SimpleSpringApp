@@ -51,7 +51,7 @@
                     <input type="text" th:field="*{passwordAgain}"
                            th:class="text" th:placeholder="#{label.confirm_password}"/>
                 </p>
-                <div th:if="${#fields.hasErrors('passwordAganin')}">
+                <div th:if="${#fields.hasErrors('passwordAgain')}">
                     <p th:each="err : ${#fields.errors('passwordAgain')}"
                        th:text="${err}">Email error
                     </p>

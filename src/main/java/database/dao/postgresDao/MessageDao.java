@@ -4,13 +4,16 @@ import database.dao.IDao.IMessageDao;
 import database.dao.abstractDao.AbstractDao;
 import database.entity.IMessage;
 import database.entity.Message;
+import database.entity.Right;
 import database.exceptions.DbException;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import utils.Const;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,10 +27,6 @@ public class MessageDao extends AbstractDao<IMessage> implements IMessageDao {
     private final String COL_MESSAGE = "message_content";
 
     public MessageDao(){}
-
-    public MessageDao(Connection connection) {
-        super(connection);
-    }
 
     @Override
     public String getSelectQuery() {
@@ -45,9 +44,9 @@ public class MessageDao extends AbstractDao<IMessage> implements IMessageDao {
     }
 
     @Override
-    public String getReadQuery(String id) {
+    public String getReadQuery() {
 
-        return getSelectQuery() + " WHERE " + COL_ID + " = " + id + ";";
+        return getSelectQuery() + " WHERE " + COL_ID + " = ? ;";
     }
 
     @Override
@@ -64,38 +63,33 @@ public class MessageDao extends AbstractDao<IMessage> implements IMessageDao {
     }
 
     @Override
-    protected List<IMessage> parseResultSet(ResultSet rs) throws DbException {
-        LinkedList<IMessage> result = new LinkedList<>();
-        try {
-            while (rs.next()) {
+    protected RowMapper<IMessage> getRowMapper() {
+        return new RowMapper<IMessage>() {
+
+            @Override
+            public IMessage mapRow(ResultSet rs, int i) throws SQLException {
                 Message message = new Message();
                 message.setId(rs.getInt(COL_ID));
                 message.setMessage(rs.getString(COL_MESSAGE));
-                result.add(message);
+
+                return message;
             }
-        } catch (Exception e) {
-            throw new DbException(e);
-        }
-        return result;
+        };
     }
 
     @Override
-    protected void prepareStatementForInsert(PreparedStatement statement, IMessage right) throws DbException {
-        try {
+    protected void prepareStatementForInsert(PreparedStatement statement,
+                                             IMessage right) throws SQLException {
+
             int i = 1;
             statement.setString(i, right.getMessage());
-        } catch (Exception e) {
-            throw new DbException(e);
-        }
+
     }
 
     @Override
-    protected void prepareStatementForUpdate(PreparedStatement statement, IMessage right) throws DbException {
-        try {
+    protected void prepareStatementForUpdate(PreparedStatement statement,
+                                             IMessage right) throws SQLException {
             int i = 1;
             statement.setString(i, right.getMessage());
-        } catch (Exception e) {
-            throw new DbException(e);
-        }
     }
 }

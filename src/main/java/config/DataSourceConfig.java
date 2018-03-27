@@ -7,7 +7,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import utils.DbWrapper;
+
+import javax.sql.DataSource;
 
 @Configuration
 @PropertySource("classpath:db_properties/postgres.properties")
@@ -18,13 +21,12 @@ public class DataSourceConfig {
     Environment env;
 
     @Bean
-    public DbWrapper dataSource() {
-        DbWrapper ds = new DbWrapper();
-        try {
-            ds.setConfig(env);
-        } catch (DbException e) {
-            System.out.println("have db config exception : " + e.getMessage());
-        }
-        return ds;
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
+        dataSource.setUrl(env.getProperty("jdbc.uri"));
+        dataSource.setUsername(env.getProperty("db.user"));
+        dataSource.setPassword(env.getProperty("db.password"));;
+        return dataSource;
     }
 }

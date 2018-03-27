@@ -8,10 +8,6 @@ import java.util.List;
 
 public interface GenericDao<T extends Identified> {
 
-    public void setConnection(Connection connection);
-
-    public Connection getConnection();
-
     public void save(T object)  throws DbException;
 
     public T find(Integer id) throws DbException;
