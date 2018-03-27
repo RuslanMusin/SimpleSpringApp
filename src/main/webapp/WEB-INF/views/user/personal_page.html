@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="head :: frag(
+                    title='Registration',
+                    links = ${new String[]{'css/menu.css','css/personal_page.css'}},
+                    scripts=${new String[]{'/js/jquery-3.2.1.js','js/search/menu_search.js','js/common/change_lang.js'}})">
+</head>
+
+<body>
+
+<div th:replace="main/menu_main :: menu"></div>
+
+<div id = "personal_div">
+
+    <div id = "user_data" th:object="${user}">
+        <h2 class = "user_p" th:text="#{label.personal_data}"></h2>
+        <p class = "user_p"><span th:text="#{label.username} + ': ' + ${user.username}"></span></p>
+        <p class = "user_p"><span th:text="#{label.country} + ': ' + ${user.country.getName()}"></span></p>
+        <p class = "user_p"><span th:text="#{label.gender} + ': ' + ${user.gender}"></span></p>
+        <p class = "user_p"><span th:text="#{label.rights} + ': ' + ${user.rights.getName()}"></span></p>
+
+        <p>
+            <th:block th:replace="form_btn :: form_btn(actionPath='/change-personal',btnValue=#{btn.change_data})" />
+        </p>
+
+        <p>
+            <th:block th:replace="form_btn :: form_btn(actionPath='/delete-user',btnValue=#{btn.delete_user})" />
+        </p>
+
+        <p><span th:text="#{lang.change}"></span>:
+            <select id="locales">
+                <option value=""></option>
+                <option value="en" th:text="#{lang.en}"></option>
+                <option value="ru" th:text="#{lang.ru}"></option>
+                <option value="esp" th:text="#{lang.esp}"></option>
+            </select>
+
+        </p>
+
+        <div id = "registration_div">
+
+        </div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

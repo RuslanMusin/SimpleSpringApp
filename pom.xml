@@ -1,0 +1,163 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>SpringGroup</groupId>
+  <artifactId>SpringTwoWebSite</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>SpringTwoWebSite Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+
+  <!-- Spring -->
+   <spring.version>4.2.4.RELEASE</spring.version>
+
+  <!-- Project specific stuff -->
+  <hibernate.validator.version>5.2.4.Final</hibernate.validator.version>
+  <java.validator.version>1.1.0.Final</java.validator.version>
+
+  </properties>
+
+  <repositories>
+  <repository>
+    <id>bintray</id>
+    <url>https://jcenter.bintray.com/</url>
+  </repository>
+</repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Spring Framework -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.1.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-impl</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+
+   <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.jtwig/jtwig-core &ndash;&gt;
+    <dependency>
+      <groupId>org.jtwig</groupId>
+      <artifactId>jtwig-core</artifactId>
+      <version>5.86.1.RELEASE</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.jtwig</groupId>
+        <artifactId>jtwig-spring</artifactId>
+        <version>5.86.1.RELEASE</version>
+    </dependency>
+
+      <dependency>
+          <groupId>org.jtwig</groupId>
+          <artifactId>jtwig-render-extension</artifactId>
+          <version>5.86.1.RELEASE</version>
+      </dependency>
+-->
+    <dependency>
+      <groupId>org.thymeleaf</groupId>
+      <artifactId>thymeleaf</artifactId>
+      <version>3.0.0.RELEASE</version>
+    </dependency>
+      <dependency>
+          <groupId>org.thymeleaf</groupId>
+          <artifactId>thymeleaf-spring4</artifactId>
+          <version>3.0.0.RELEASE</version>
+      </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>3.2.5.RELEASE</version>
+    </dependency>
+      <dependency>
+          <groupId>javax</groupId>
+          <artifactId>javaee-web-api</artifactId>
+          <version>7.0</version>
+      </dependency>
+
+    <!-- JSR-303 Validation -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${java.validator.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate.validator.version}</version>
+    </dependency>
+
+
+  </dependencies>
+
+  <build>
+    <finalName>SpringTwoWebSite</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>1.7</source>
+                  <target>1.7</target>
+              </configuration>
+          </plugin>
+      </plugins>
+  </build>
+</project>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="frag(title,links,scripts)">
+
+    <meta charset="utf-8"/>
+    <title th:text="${title}">Common title</title>
+
+    <th:block th:each="link : ${links}">
+        <link rel="stylesheet" type="text/css"
+              th:href="@{${link}}"
+              th:if="${link != null}"/>
+    </th:block>
+
+    <th:block th:each="script : ${scripts}">
+        <script th:src="@{${script}}" th:if="${script != null}"></script>
+    </th:block>
+
+    <!--<script th:src="@{${script}}" th:if="${script != null}"></script>-->
+</head>
+</html>

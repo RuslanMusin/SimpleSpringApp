@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <body th:fragment="dop_data(countries)">
+
+        <p>Выберите страну :  <select th:field="*{countryId}">
+            <option th:each="country : ${countries}"
+                    th:value="${country.id}"
+                    th:text="${country.name}"/>
+        </select></p>
+
+        <p>Выберите пол : <select th:field="*{gender}">
+            <option th:value="мужской">мужской</option>
+            <option th:value="женский">женский</option>
+        </select></p>
+
+    </body>
+</html>

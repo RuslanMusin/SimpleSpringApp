@@ -1,0 +1,152 @@
+.ul_menu {
+    list-style-type: none;
+    height: 46px;
+    margin: 0;
+    padding:0;
+    /*overflow: hidden;*/
+    background-color: #333;
+}
+
+.ul_menu li {
+    float: left;
+    /*width: 10%;*/
+    box-sizing: border-box;
+}
+
+.ul_menu li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.ul_menu li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.ul_menu li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.ul_menu li .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#search{
+    /*width: 45%;*/
+
+    float: right;
+    margin: 15px 20px;
+}
+
+input[name=search] {
+    width: 200px;
+    float: right;
+    transition: width 0.6s ;
+}
+
+
+.right{
+    float: right;
+}
+
+#menuDiv{
+    text-align: left;
+    background: #fff;
+    min-height : 46px;
+    min-width: 730px;
+    max-height: 46px;
+    width: 70%;
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: 0 20px 20px rgba(0,0,0,.4);
+}
+
+#menu_search{
+    margin-top: 12px;
+}
+
+#menu_search_form{
+    margin-bottom: 0;
+}
+
+.ul_menu .right_li{
+    float: right;
+}
+
+#menuInput{
+    width: 100%;
+}
+
+#div_autocomplete{
+    width: inherit;
+    z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2); ;
+}
+
+#searchData{
+    width: 100%;
+    background-color: #f1f1f1
+
+}
+
+.ul_menu .searchLink{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    text-align: left;
+    color: black;
+}
+
+#movie_part{
+    width:90px;
+}
+
+#people_part{
+    width:72px;
+}
+
+#group_part{
+    width:84px;
+}
+
+#quit_part{
+    width:78px;
+}
+
+#personal_part{
+    width:128px;
+}
+
+#search_part{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left:39px;
+    margin-right:39px;
+}
+
+
+

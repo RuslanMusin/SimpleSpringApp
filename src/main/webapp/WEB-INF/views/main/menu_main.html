@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="menu">
+        <div id = "menuDiv">
+
+            <ul th:class = "ul_menu">
+                <li id = "movie_part" >
+                    <a th:href="@{/movie_list}" th:text="#{menu.movies}"></a>
+                </li>
+                <li id = "people_part"  class="dropdown">
+                    <a href="#dropdown" class="dropbtn" th:text="#{menu.people}"></a>
+                    <!--<div class="dropdown-content">
+                        <a th:href="@{/actor_list}">Актеры</a>
+                        <a th:href="@{/director_list}">Режиссеры</a>
+                    </div>-->
+                </li>
+
+                <li id = "search_part">
+                    <div id = "menu_search">
+                        <form id="menu_search_form">
+                            <input type="hidden" id = "menuType" name="searchType" value="menu"/>
+                            <input type="search" id="menuInput" placeholder="Search movie..." autocomplete="off"/>
+                        </form>
+                    </div>
+                    <div id = "div_autocomplete">
+                    </div>
+
+
+                </li>
+
+                <li id = "quit_part" class="right_li">
+                    <a th:href="@{/exit}" class="right" th:text="#{menu.quit}"></a>
+                </li>
+                <li id = "personal_part" class="right_li">
+                    <a th:href="@{/personal}" class="right" th:text="#{menu.personal}"></a>
+                </li>
+            </ul>
+
+        </div>
+    </th:block>
+</html>
