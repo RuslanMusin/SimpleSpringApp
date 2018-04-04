@@ -7,53 +7,57 @@ import org.hibernate.validator.constraints.NotEmpty;
 import utils.validators.GenderConstraint;
 
 
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "users")
 public class User implements Identified,Serializable {
 
-    @NotNull(message = "Id can't be null")
-    @Min(value = 1,message = "Id must be greater than 1")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id", unique = true, nullable = false)
+//    @NotNull(message = "Id can't be null")
     private Integer id;
 
+    @Column(unique = true)
     @NotBlank(message = "Email can't be null")
     @Size(min = 5,max = 100,message = "Email's length must be between 6 and 100")
     @Email(message = "Email has to be correct")
     private String email;
 
+    @Column
     @NotBlank(message = "Password can't be empty")
     @Size(min = 6,max = 100,message = "Password's length must be between 6 and 100")
     private String password;
 
+    @Column
     @NotBlank(message = "Username can't be empty")
     @Size(min = 6,max = 100,message = "Username's length must be between 6 and 100")
     private String username;
 
-    @NotEmpty(message = "User should live in some country")
+    @ManyToOne
+    @JoinColumn(name="country_id")
     private Country country;
 
-    @NotEmpty(message = "User should have some rights")
+    @ManyToOne
+    @JoinColumn(name="user_right",referencedColumnName = "right_id")
     private Right rights;
 
+    @Column
     @NotBlank(message = "Gender can't be empty")
     @GenderConstraint
     private String gender;
 
+    @Column(name = "cookie_id")
     @NotNull(message = "User should have some cookie")
     private String cookieId;
 
     public User() {
     }
-
-    /*public User(UserForm userForm) throws DbException {
-        this.username = userForm.getUsername();
-        this.email = userForm.getEmail();
-        this.password = userForm.getPassword();
-        this.gender = userForm.getGender();
-        setCountry(userForm.getCountryId());
-    }*/
 
     @Override
     public boolean equals(Object obj) {
@@ -64,16 +68,6 @@ public class User implements Identified,Serializable {
         }
         return false;
     }
-
-   /* public User(String email, String password, String username, Integer countryId, String gender) throws DbException {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        setCountry(countryId);
-        this.gender = gender;
-    }*/
-
-
 
     public String getEmail() {
         return email;
@@ -94,15 +88,6 @@ public class User implements Identified,Serializable {
     public void setCountry(Country country) {
         this.country = country;
     }
-
-   /* public void setCountry(Integer countryId) throws DbException {
-        try {
-            this.country = dbService.findCountry(countryId);
-        }catch (DbException ex){
-            throw new DbException("Страна пользователя не найдена в БД(ошибка на сервере)");
-        }
-
-    }*/
 
     public String getGender() {
         return gender;
@@ -148,13 +133,5 @@ public class User implements Identified,Serializable {
         this.rights = rights;
     }
 
-    /*public void setRights(Integer rightsId) {
-
-        try {
-            this.rights = dbService.findRights(rightsId);
-        } catch (DbException e) {
-            e.printStackTrace();
-        }
-    }*/
 }
 

@@ -1,18 +1,10 @@
 package utils;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-import database.exceptions.DbException;
-import org.omg.CORBA.Environment;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import utils.exceptions.DbException;
 
-import javax.servlet.ServletContext;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class DbWrapper {
 

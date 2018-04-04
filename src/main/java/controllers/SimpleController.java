@@ -2,9 +2,9 @@ package controllers;
 
 import database.entity.Country;
 import database.entity.User;
-import database.entity.dop.ChangeForm;
-import database.entity.dop.UserForm;
-import database.exceptions.DbException;
+import database.entity.forms.ChangeForm;
+import database.entity.forms.UserForm;
+import utils.exceptions.DbException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

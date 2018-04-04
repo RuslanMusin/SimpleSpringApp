@@ -3,20 +3,14 @@ package database.dao.postgresDao;
 import database.dao.IDao.ICountryDao;
 import database.dao.abstractDao.AbstractDao;
 import database.entity.Country;
-import database.entity.Right;
-import database.exceptions.DbException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import utils.Const;
-import utils.DbWrapper;
 
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
 
 @Repository
 public class CountryDao extends AbstractDao<Country> implements ICountryDao{

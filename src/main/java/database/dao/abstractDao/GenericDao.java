@@ -1,9 +1,8 @@
 package database.dao.abstractDao;
 
 import database.entity.Identified;
-import database.exceptions.DbException;
+import utils.exceptions.DbException;
 
-import java.sql.Connection;
 import java.util.List;
 
 public interface GenericDao<T extends Identified> {

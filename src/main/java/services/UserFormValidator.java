@@ -1,6 +1,6 @@
 package services;
 
-import database.entity.dop.UserForm;
+import database.entity.forms.UserForm;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

@@ -2,7 +2,7 @@ package database.dao.IDao;
 
 import database.dao.abstractDao.GenericDao;
 import database.entity.User;
-import database.exceptions.DbException;
+import utils.exceptions.DbException;
 import org.springframework.stereotype.Repository;
 
 @Repository

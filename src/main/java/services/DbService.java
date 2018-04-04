@@ -1,15 +1,15 @@
 package services;
 
 
-import database.dao.IDao.ICountryDao;
-import database.dao.IDao.IRightDao;
-import database.dao.IDao.IUserDao;
 import database.entity.Country;
 import database.entity.Right;
 import database.entity.User;
-import database.entity.dop.ChangeForm;
-import database.entity.dop.UserForm;
-import database.exceptions.DbException;
+import database.entity.forms.ChangeForm;
+import database.entity.forms.UserForm;
+import database.repository.CountryRepository;
+import database.repository.RightRepository;
+import database.repository.UserRepository;
+import utils.exceptions.DbException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -17,29 +17,27 @@ import java.util.List;
 @org.springframework.stereotype.Service
 public class DbService implements Service{
 
+    private UserRepository userRepo;
 
-    private IUserDao userDao;
+    private CountryRepository countryRepo;
 
-    private ICountryDao countryDao;
-
-    private IRightDao rightDao;
+    private RightRepository rightRepo;
 
     @Autowired
-    public DbService(IUserDao userDao, ICountryDao countryDao, IRightDao rightDao) throws DbException {
-        this.userDao = userDao;
-        this.countryDao = countryDao;
-        this.rightDao = rightDao;
+    public DbService(UserRepository userRepo, CountryRepository countryRepo, RightRepository rightRepo) throws DbException {
+        this.userRepo = userRepo;
+        this.countryRepo = countryRepo;
+        this.rightRepo = rightRepo;
     }
 
     public void insertUser(UserForm userForm) throws DbException {
-//        UserDao userDao = new UserDao(DbWrapper.getConnection());
-
         User user = new User();
         user.setUsername(userForm.getUsername());
         user.setEmail(userForm.getEmail());
         user.setPassword(userForm.getPassword());
         user.setGender(userForm.getGender());
         user.setCountry(findCountry(userForm.getCountryId()));
+        user.setRights(findRights(2));
 
         System.out.println("user:\n");
         System.out.println(user.getCountry().getName());
@@ -49,15 +47,14 @@ public class DbService implements Service{
 
         System.out.println("insertUser");
 
-        userDao.save(user);
+        userRepo.save(user);
     }
 
     public User getUser(UserForm userForm) throws DbException {
-//        UserDao userDao = new UserDao(DbWrapper.getConnection());
 
         System.out.println("userForm : " + userForm.getEmail());
 
-        User user = userDao.findByEmail(userForm.getEmail());
+        User user = userRepo.findByEmail(userForm.getEmail());
 
         if(user == null){
             throw new DbException("user not found");
@@ -71,28 +68,26 @@ public class DbService implements Service{
     }
 
     public void deleteUser(int id) throws DbException {
-//        new UserDao(DbWrapper.getConnection()).delete(id);
-        userDao.delete(id);
+        userRepo.delete(id);
     }
 
     public void updateUser(User user,ChangeForm changeForm) throws DbException {
-//        new UserDao(DbWrapper.getConnection()).update(user);
         user.setUsername(changeForm.getUsername());
         user.setCountry(findCountry(changeForm.getCountryId()));
         user.setGender(changeForm.getGender());
 
-        userDao.update(user);
+        userRepo.save(user);
     }
 
     public List<Country> findAllCountries() throws DbException {
-        return countryDao.findAll();
+        return (List<Country>) countryRepo.findAll();
     }
 
     public Country findCountry(Integer id) throws DbException {
-        return countryDao.find(id);
+        return countryRepo.findOne(id);
     }
 
     public Right findRights(Integer id) throws DbException {
-        return rightDao.find(id);
+        return rightRepo.findOne(id);
     }
 }

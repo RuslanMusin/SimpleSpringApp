@@ -5,23 +5,15 @@ import database.dao.abstractDao.AbstractDao;
 import database.entity.Country;
 import database.entity.Right;
 import database.entity.User;
-import database.exceptions.DbException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import utils.exceptions.DbException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import utils.Const;
-import utils.DbWrapper;
 
 
-import javax.sql.DataSource;
-import java.awt.print.Book;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
 
 @Repository
 public class UserDao extends AbstractDao<User> implements IUserDao {
@@ -158,18 +150,6 @@ public class UserDao extends AbstractDao<User> implements IUserDao {
         String sql = getSelectByEmail();
         User user = jdbcTemplateObject.queryForObject(sql,
                 new Object[]{email},getRowMapper());
-        /*try (PreparedStatement statement = DbWrapper.getConnection().prepareStatement(sql)) {
-            statement.setString(1,email);
-            ResultSet rs = statement.executeQuery();
-            List<User> list = parseResultSet(rs);
-            if ((list == null) || (list.size() != 1)) {
-                throw new DbException("findByEmailExПользователь не найден по email.");
-            }
-            user = list.iterator().next();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            throw new DbException(e);
-        }*/
         return user;
     }
 

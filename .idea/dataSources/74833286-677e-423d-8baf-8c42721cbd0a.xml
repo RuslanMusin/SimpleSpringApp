@@ -14,7 +14,7 @@
     </database>
     <schema id="4" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-03-24.22:58:48.886</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-03-31.18:03:19.711</IntrospectionTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -35,8 +35,8 @@
     </schema>
     <schema id="10" parent="3" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-03-24.22:58:47.425</IntrospectionTimestamp>
-      <IntrospectionStateNumber>573</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-04-03.20:27:42.667</IntrospectionTimestamp>
+      <IntrospectionStateNumber>612</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -55,56 +55,87 @@
     <schema id="15" parent="3" name="information_schema">
       <ObjectId>12648</ObjectId>
     </schema>
-    <sequence id="16" parent="10" name="actors_actor_id_seq">
+    <sequence id="16" parent="10" name="genres_genre_id_seq">
+      <ObjectId>24632</ObjectId>
+      <StateNumber>612</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="17" parent="10" name="hibernate_sequence">
+      <ObjectId>24577</ObjectId>
+      <StateNumber>583</StateNumber>
+    </sequence>
+    <sequence id="18" parent="10" name="place_types_type_id_seq">
+      <ObjectId>24597</ObjectId>
+      <StateNumber>600</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="19" parent="10" name="places_id_seq">
+      <ObjectId>24589</ObjectId>
+      <StateNumber>599</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="20" parent="10" name="actors_actor_id_seq">
       <ObjectId>16458</ObjectId>
       <StateNumber>564</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="17" parent="10" name="countries_country_id_seq">
+    <sequence id="21" parent="10" name="countries_country_id_seq">
       <ObjectId>16394</ObjectId>
       <StateNumber>558</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="18" parent="10" name="movies_movie_id_seq">
+    <sequence id="22" parent="10" name="movies_movie_id_seq">
       <ObjectId>16442</ObjectId>
       <StateNumber>562</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="19" parent="10" name="rights_right_id_seq">
+    <sequence id="23" parent="10" name="rights_right_id_seq">
       <ObjectId>16404</ObjectId>
       <StateNumber>559</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="20" parent="10" name="users_user_id_seq">
+    <sequence id="24" parent="10" name="users_user_id_seq">
       <ObjectId>16414</ObjectId>
       <StateNumber>560</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <table id="21" parent="10" name="actors">
+    <table id="25" parent="10" name="actors">
       <ObjectId>16460</ObjectId>
       <StateNumber>564</StateNumber>
     </table>
-    <table id="22" parent="10" name="countries">
+    <table id="26" parent="10" name="countries">
       <ObjectId>16396</ObjectId>
-      <StateNumber>564</StateNumber>
+      <StateNumber>584</StateNumber>
     </table>
-    <table id="23" parent="10" name="movies">
+    <table id="27" parent="10" name="genres">
+      <ObjectId>24634</ObjectId>
+      <StateNumber>612</StateNumber>
+    </table>
+    <table id="28" parent="10" name="movies">
       <ObjectId>16444</ObjectId>
       <StateNumber>562</StateNumber>
     </table>
-    <table id="24" parent="10" name="rights">
+    <table id="29" parent="10" name="place_types">
+      <ObjectId>24599</ObjectId>
+      <StateNumber>604</StateNumber>
+    </table>
+    <table id="30" parent="10" name="places">
+      <ObjectId>24591</ObjectId>
+      <StateNumber>608</StateNumber>
+    </table>
+    <table id="31" parent="10" name="rights">
       <ObjectId>16406</ObjectId>
-      <StateNumber>560</StateNumber>
+      <StateNumber>585</StateNumber>
     </table>
-    <table id="25" parent="10" name="users">
+    <table id="32" parent="10" name="users">
       <ObjectId>16416</ObjectId>
-      <StateNumber>569</StateNumber>
+      <StateNumber>585</StateNumber>
     </table>
-    <view id="26" parent="10" name="full_user_inf_view">
+    <view id="33" parent="10" name="full_user_inf_view">
       <ObjectId>16480</ObjectId>
       <StateNumber>573</StateNumber>
     </view>
-    <column id="27" parent="21" name="actor_id">
+    <column id="34" parent="25" name="actor_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -112,69 +143,69 @@
       <SequenceName>actors_actor_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;actors_actor_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="28" parent="21" name="name">
+    <column id="35" parent="25" name="name">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>564</StateNumber>
     </column>
-    <column id="29" parent="21" name="surname">
+    <column id="36" parent="25" name="surname">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>564</StateNumber>
     </column>
-    <column id="30" parent="21" name="birthday">
+    <column id="37" parent="25" name="birthday">
       <Position>4</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>564</StateNumber>
     </column>
-    <column id="31" parent="21" name="motherland">
+    <column id="38" parent="25" name="motherland">
       <Position>5</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>564</StateNumber>
     </column>
-    <column id="32" parent="21" name="photo">
+    <column id="39" parent="25" name="photo">
       <Position>6</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>564</StateNumber>
     </column>
-    <column id="33" parent="21" name="mark">
+    <column id="40" parent="25" name="mark">
       <Position>7</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>564</StateNumber>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="34" parent="21" name="description">
+    <column id="41" parent="25" name="description">
       <Position>8</Position>
       <DataType>varchar(2000)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>564</StateNumber>
     </column>
-    <index id="35" parent="21" name="actors_pk">
+    <index id="42" parent="25" name="actors_pk">
       <ObjectId>16470</ObjectId>
       <ColNames>actor_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="36" parent="21" name="actors_name_index">
+    <index id="43" parent="25" name="actors_name_index">
       <ObjectId>16477</ObjectId>
       <ColNames>name</ColNames>
     </index>
-    <index id="37" parent="21" name="actors_surname_index">
+    <index id="44" parent="25" name="actors_surname_index">
       <ObjectId>16478</ObjectId>
       <ColNames>surname</ColNames>
     </index>
-    <key id="38" parent="21" name="actors_pk">
+    <key id="45" parent="25" name="actors_pk">
       <ObjectId>16471</ObjectId>
       <ColNames>actor_id</ColNames>
       <UnderlyingIndexName>actors_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="39" parent="21" name="actors_motherland_fkey">
+    <foreign-key id="46" parent="25" name="actors_motherland_fkey">
       <ObjectId>16472</ObjectId>
       <ColNames>motherland</ColNames>
       <RefTableId>16396</RefTableId>
@@ -184,17 +215,17 @@
       <RefColNames>country_id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <check id="40" parent="21" name="actors_birthday_min">
+    <check id="47" parent="25" name="actors_birthday_min">
       <ObjectId>16465</ObjectId>
       <ColNames>birthday</ColNames>
       <Predicate>(date_part(&apos;year&apos;::text, birthday) &gt;= (1800)::double precision) AND (birthday &lt;= (&apos;now&apos;::text)::date)</Predicate>
     </check>
-    <check id="41" parent="21" name="actors_mark_range">
+    <check id="48" parent="25" name="actors_mark_range">
       <ObjectId>16466</ObjectId>
       <ColNames>mark</ColNames>
       <Predicate>(mark &gt;= 0) AND (mark &lt;= 10)</Predicate>
     </check>
-    <column id="42" parent="22" name="country_id">
+    <column id="49" parent="26" name="country_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -202,34 +233,69 @@
       <SequenceName>countries_country_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;countries_country_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="43" parent="22" name="name">
+    <column id="50" parent="26" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>558</StateNumber>
     </column>
-    <index id="44" parent="22" name="countries_pk">
+    <index id="51" parent="26" name="countries_pk">
       <ObjectId>16400</ObjectId>
       <ColNames>country_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="45" parent="22" name="countries_name_uindex">
+    <index id="52" parent="26" name="countries_name_uindex">
       <ObjectId>16402</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="46" parent="22" name="countries_pk">
+    <key id="53" parent="26" name="countries_pk">
       <ObjectId>16401</ObjectId>
       <ColNames>country_id</ColNames>
       <UnderlyingIndexName>countries_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="47" parent="22" name="countries_name_uindex">
+    <key id="54" parent="26" name="countries_name_uindex">
       <ObjectId>16403</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>countries_name_uindex</UnderlyingIndexName>
     </key>
-    <column id="48" parent="23" name="movie_id">
+    <column id="55" parent="27" name="genre_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>612</StateNumber>
+      <SequenceName>genres_genre_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;genres_genre_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="56" parent="27" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>612</StateNumber>
+    </column>
+    <index id="57" parent="27" name="genres_pk">
+      <ObjectId>24638</ObjectId>
+      <ColNames>genre_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="58" parent="27" name="genres_name_unique">
+      <ObjectId>24640</ObjectId>
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="59" parent="27" name="genres_pk">
+      <ObjectId>24639</ObjectId>
+      <ColNames>genre_id</ColNames>
+      <UnderlyingIndexName>genres_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="60" parent="27" name="genres_name_unique">
+      <ObjectId>24641</ObjectId>
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>genres_name_unique</UnderlyingIndexName>
+    </key>
+    <column id="61" parent="28" name="movie_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -237,80 +303,165 @@
       <SequenceName>movies_movie_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;movies_movie_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="49" parent="23" name="name">
+    <column id="62" parent="28" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>562</StateNumber>
     </column>
-    <column id="50" parent="23" name="description">
+    <column id="63" parent="28" name="description">
       <Position>3</Position>
       <DataType>varchar(2000)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>562</StateNumber>
     </column>
-    <column id="51" parent="23" name="year">
+    <column id="64" parent="28" name="year">
       <Position>4</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>562</StateNumber>
     </column>
-    <column id="52" parent="23" name="budget">
+    <column id="65" parent="28" name="budget">
       <Position>5</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>562</StateNumber>
     </column>
-    <column id="53" parent="23" name="money">
+    <column id="66" parent="28" name="money">
       <Position>6</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>562</StateNumber>
     </column>
-    <column id="54" parent="23" name="mark">
+    <column id="67" parent="28" name="mark">
       <Position>7</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>562</StateNumber>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="55" parent="23" name="photo">
+    <column id="68" parent="28" name="photo">
       <Position>8</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>562</StateNumber>
     </column>
-    <index id="56" parent="23" name="movies_pk">
+    <index id="69" parent="28" name="movies_pk">
       <ObjectId>16455</ObjectId>
       <ColNames>movie_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="57" parent="23" name="movies_name_index">
+    <index id="70" parent="28" name="movies_name_index">
       <ObjectId>16457</ObjectId>
       <ColNames>name</ColNames>
     </index>
-    <key id="58" parent="23" name="movies_pk">
+    <key id="71" parent="28" name="movies_pk">
       <ObjectId>16456</ObjectId>
       <ColNames>movie_id</ColNames>
       <UnderlyingIndexName>movies_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <check id="59" parent="23" name="movies_year_check">
+    <check id="72" parent="28" name="movies_year_check">
       <ObjectId>16449</ObjectId>
       <ColNames>year</ColNames>
       <Predicate>(date_part(&apos;year&apos;::text, year) &gt;= (1900)::double precision) AND (date_part(&apos;year&apos;::text, year) &lt;= date_part(&apos;year&apos;::text, (&apos;now&apos;::text)::date))</Predicate>
     </check>
-    <check id="60" parent="23" name="movies_budget_limit">
+    <check id="73" parent="28" name="movies_budget_limit">
       <ObjectId>16450</ObjectId>
       <ColNames>budget</ColNames>
       <Predicate>budget &gt; 0</Predicate>
     </check>
-    <check id="61" parent="23" name="movies_mark_range">
+    <check id="74" parent="28" name="movies_mark_range">
       <ObjectId>16451</ObjectId>
       <ColNames>mark</ColNames>
       <Predicate>(mark &gt;= 0) AND (mark &lt;= 10)</Predicate>
     </check>
-    <column id="62" parent="24" name="right_id">
+    <column id="75" parent="29" name="type_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>600</StateNumber>
+      <SequenceName>place_types_type_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;place_types_type_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="76" parent="29" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>600</StateNumber>
+    </column>
+    <index id="77" parent="29" name="place_types_type_id_pk">
+      <ObjectId>24603</ObjectId>
+      <ColNames>type_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="78" parent="29" name="place_types_type_id_pk">
+      <ObjectId>24604</ObjectId>
+      <ColNames>type_id</ColNames>
+      <UnderlyingIndexName>place_types_type_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="79" parent="30" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>599</StateNumber>
+      <SequenceName>places_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;places_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="80" parent="30" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>599</StateNumber>
+    </column>
+    <column id="81" parent="30" name="longitude">
+      <Position>3</Position>
+      <DataType>varchar(1000000)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>607</StateNumber>
+    </column>
+    <column id="82" parent="30" name="lat">
+      <Position>4</Position>
+      <DataType>varchar(1000000)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>608</StateNumber>
+    </column>
+    <column id="83" parent="30" name="type_id">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>599</StateNumber>
+    </column>
+    <index id="84" parent="30" name="places_pk">
+      <ObjectId>24595</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="85" parent="30" name="places_pk">
+      <ObjectId>24596</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>places_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="86" parent="30" name="fkalyv2yoowrcepwyv3h67brxyb">
+      <ObjectId>24610</ObjectId>
+      <ColNames>type_id</ColNames>
+      <RefTableId>24599</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>place_types</RefTableName>
+      <RefKeyName>place_types_type_id_pk</RefKeyName>
+      <RefColNames>type_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="87" parent="30" name="places___fk">
+      <ObjectId>24605</ObjectId>
+      <ColNames>type_id</ColNames>
+      <RefTableId>24599</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>place_types</RefTableName>
+      <RefKeyName>place_types_type_id_pk</RefKeyName>
+      <RefColNames>type_id</RefColNames>
+    </foreign-key>
+    <column id="88" parent="31" name="right_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -318,34 +469,34 @@
       <SequenceName>rights_right_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;rights_right_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="63" parent="24" name="right_name">
+    <column id="89" parent="31" name="right_name">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>559</StateNumber>
     </column>
-    <index id="64" parent="24" name="rights_pk">
+    <index id="90" parent="31" name="rights_pk">
       <ObjectId>16410</ObjectId>
       <ColNames>right_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="65" parent="24" name="rights_right_name_unique">
+    <index id="91" parent="31" name="rights_right_name_unique">
       <ObjectId>16412</ObjectId>
       <ColNames>right_name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="66" parent="24" name="rights_pk">
+    <key id="92" parent="31" name="rights_pk">
       <ObjectId>16411</ObjectId>
       <ColNames>right_id</ColNames>
       <UnderlyingIndexName>rights_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="67" parent="24" name="rights_right_name_unique">
+    <key id="93" parent="31" name="rights_right_name_unique">
       <ObjectId>16413</ObjectId>
       <ColNames>right_name</ColNames>
       <UnderlyingIndexName>rights_right_name_unique</UnderlyingIndexName>
     </key>
-    <column id="68" parent="25" name="user_id">
+    <column id="94" parent="32" name="user_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -353,87 +504,96 @@
       <SequenceName>users_user_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;users_user_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="69" parent="25" name="email">
+    <column id="95" parent="32" name="email">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>560</StateNumber>
     </column>
-    <column id="70" parent="25" name="password">
+    <column id="96" parent="32" name="password">
       <Position>3</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>560</StateNumber>
     </column>
-    <column id="71" parent="25" name="username">
+    <column id="97" parent="32" name="username">
       <Position>4</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>560</StateNumber>
     </column>
-    <column id="72" parent="25" name="country_id">
+    <column id="98" parent="32" name="country_id">
       <Position>5</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>560</StateNumber>
     </column>
-    <column id="73" parent="25" name="gender">
+    <column id="99" parent="32" name="gender">
       <Position>6</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>569</StateNumber>
     </column>
-    <column id="74" parent="25" name="user_right">
+    <column id="100" parent="32" name="user_right">
       <Position>7</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>560</StateNumber>
       <DefaultExpression>2</DefaultExpression>
     </column>
-    <column id="75" parent="25" name="cookie_id">
+    <column id="101" parent="32" name="cookie_id">
       <Position>8</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>560</StateNumber>
     </column>
-    <index id="76" parent="25" name="users_pk">
+    <index id="102" parent="32" name="users_pk">
       <ObjectId>16425</ObjectId>
       <ColNames>user_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="77" parent="25" name="users_email_password">
+    <index id="103" parent="32" name="users_email_password">
       <ObjectId>16441</ObjectId>
       <ColNames>email
 password</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="78" parent="25" name="users_email_unique">
+    <index id="104" parent="32" name="users_email_unique">
       <ObjectId>16427</ObjectId>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="79" parent="25" name="users_cookie_id_unique">
+    <index id="105" parent="32" name="users_cookie_id_unique">
       <ObjectId>16429</ObjectId>
       <ColNames>cookie_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="80" parent="25" name="users_pk">
+    <key id="106" parent="32" name="users_pk">
       <ObjectId>16426</ObjectId>
       <ColNames>user_id</ColNames>
       <UnderlyingIndexName>users_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="81" parent="25" name="users_email_unique">
+    <key id="107" parent="32" name="users_email_unique">
       <ObjectId>16428</ObjectId>
       <ColNames>email</ColNames>
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>
-    <key id="82" parent="25" name="users_cookie_id_unique">
+    <key id="108" parent="32" name="users_cookie_id_unique">
       <ObjectId>16430</ObjectId>
       <ColNames>cookie_id</ColNames>
       <UnderlyingIndexName>users_cookie_id_unique</UnderlyingIndexName>
     </key>
-    <foreign-key id="83" parent="25" name="users_country_id_fkey">
+    <foreign-key id="109" parent="32" name="fkjlpks00ofkq3sqd9hqiavv5lg">
+      <ObjectId>24579</ObjectId>
+      <ColNames>country_id</ColNames>
+      <RefTableId>16396</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>countries</RefTableName>
+      <RefKeyName>countries_pk</RefKeyName>
+      <RefColNames>country_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="110" parent="32" name="users_country_id_fkey">
       <ObjectId>16431</ObjectId>
       <ColNames>country_id</ColNames>
       <RefTableId>16396</RefTableId>
@@ -443,7 +603,16 @@ password</ColNames>
       <RefColNames>country_id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="84" parent="25" name="users_user_right_fkey">
+    <foreign-key id="111" parent="32" name="fkslrn0v83n9oa37x38sdy5xdas">
+      <ObjectId>24584</ObjectId>
+      <ColNames>user_right</ColNames>
+      <RefTableId>16406</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>rights</RefTableName>
+      <RefKeyName>rights_pk</RefKeyName>
+      <RefColNames>right_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="112" parent="32" name="users_user_right_fkey">
       <ObjectId>16436</ObjectId>
       <ColNames>user_right</ColNames>
       <RefTableId>16406</RefTableId>
@@ -453,52 +622,52 @@ password</ColNames>
       <RefColNames>right_id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <check id="85" parent="25" name="users_gender_range">
+    <check id="113" parent="32" name="users_gender_range">
       <ObjectId>16479</ObjectId>
       <ColNames>gender</ColNames>
       <Predicate>(gender)::text = ANY (ARRAY[(&apos;мужской&apos;::character varying)::text, (&apos;женский&apos;::character varying)::text])</Predicate>
     </check>
-    <column id="86" parent="26" name="user_id">
+    <column id="114" parent="33" name="user_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <StateNumber>573</StateNumber>
     </column>
-    <column id="87" parent="26" name="email">
+    <column id="115" parent="33" name="email">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <StateNumber>573</StateNumber>
     </column>
-    <column id="88" parent="26" name="username">
+    <column id="116" parent="33" name="username">
       <Position>3</Position>
       <DataType>varchar(100)|0</DataType>
       <StateNumber>573</StateNumber>
     </column>
-    <column id="89" parent="26" name="gender">
+    <column id="117" parent="33" name="gender">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
       <StateNumber>573</StateNumber>
     </column>
-    <column id="90" parent="26" name="country_id">
+    <column id="118" parent="33" name="country_id">
       <Position>5</Position>
       <DataType>integer|0</DataType>
       <StateNumber>573</StateNumber>
     </column>
-    <column id="91" parent="26" name="user_right">
+    <column id="119" parent="33" name="user_right">
       <Position>6</Position>
       <DataType>integer|0</DataType>
       <StateNumber>573</StateNumber>
     </column>
-    <column id="92" parent="26" name="cookie_id">
+    <column id="120" parent="33" name="cookie_id">
       <Position>7</Position>
       <DataType>text|0</DataType>
       <StateNumber>573</StateNumber>
     </column>
-    <column id="93" parent="26" name="name">
+    <column id="121" parent="33" name="name">
       <Position>8</Position>
       <DataType>varchar(100)|0</DataType>
       <StateNumber>573</StateNumber>
     </column>
-    <column id="94" parent="26" name="right_name">
+    <column id="122" parent="33" name="right_name">
       <Position>9</Position>
       <DataType>varchar(30)|0</DataType>
       <StateNumber>573</StateNumber>

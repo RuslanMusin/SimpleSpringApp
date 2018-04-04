@@ -14,7 +14,5 @@
     <th:block th:each="script : ${scripts}">
         <script th:src="@{${script}}" th:if="${script != null}"></script>
     </th:block>
-
-    <!--<script th:src="@{${script}}" th:if="${script != null}"></script>-->
 </head>
 </html>

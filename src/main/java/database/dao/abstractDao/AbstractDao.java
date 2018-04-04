@@ -1,7 +1,7 @@
 package database.dao.abstractDao;
 
 import database.entity.Identified;
-import database.exceptions.DbException;
+import utils.exceptions.DbException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -17,7 +17,6 @@ public abstract class AbstractDao<T extends Identified> implements GenericDao<T>
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
-
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
 
@@ -52,7 +51,6 @@ public abstract class AbstractDao<T extends Identified> implements GenericDao<T>
         String sql = getReadQuery();
         T findObject = jdbcTemplateObject.queryForObject(sql,
                                             new Object[]{id},getRowMapper());
-
         return findObject;
     }
 

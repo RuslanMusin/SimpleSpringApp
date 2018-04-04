@@ -1,12 +1,23 @@
 package database.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
+@Entity
+@Table(name = "rights")
 public class Right implements Identified,Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "right_id", unique = true, nullable = false)
     private Integer id;
 
+    @Column(name = "right_name")
     private String name;
+
+    @OneToMany(mappedBy = "rights")
+    private List<User> users;
 
     public Right(Integer id, String name) {
         this.id = id;
@@ -39,5 +50,13 @@ public class Right implements Identified,Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
