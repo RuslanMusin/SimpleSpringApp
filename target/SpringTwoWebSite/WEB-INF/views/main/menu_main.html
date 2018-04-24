@@ -39,7 +39,7 @@
                 </li>
 
                 <li id = "quit_part" class="nav-item">
-                    <a class="nav-link" th:href="${(#mvc.url('SC#logout')).build()}" th:text="#{menu.quit}"></a>
+                    <a class="nav-link" th:href="@{/logout}" th:text="#{menu.quit}"></a>
                 </li>
             </ul>
     </nav>

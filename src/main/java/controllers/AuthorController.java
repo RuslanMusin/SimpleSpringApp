@@ -10,6 +10,7 @@ import exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -67,10 +68,10 @@ public class AuthorController {
     }
 
     @RequestMapping(value = AUTHOR_ITEM,method = RequestMethod.GET)
-    public String showAuthor( @PathVariable("id") Integer id, Model model, HttpSession session) {
+    public String showAuthor(@PathVariable("id") Integer id, Model model, @AuthenticationPrincipal User user, HttpSession session) {
         System.out.println("showAuthor");
 
-        User user = (User) session.getAttribute(Const.USER_SESSION);
+//        User user = (User) session.getAttribute(Const.USER_SESSION);
         Author author;
 
         try {
@@ -83,6 +84,7 @@ public class AuthorController {
         }
 
         model.addAttribute("author",author);
+        model.addAttribute("user",user);
 
         return "authors/author_content";
 

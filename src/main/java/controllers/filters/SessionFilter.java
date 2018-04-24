@@ -1,7 +1,9 @@
 package controllers.filters;
 
+import controllers.SecurityController;
 import database.entity.User;
 import org.springframework.security.authentication.RememberMeAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.Principal;
 
-@WebFilter(urlPatterns = {"/*"}, description = "Session Checker Filter")
+@WebFilter(urlPatterns = {"/","/login"}, description = "Session Checker Filter")
 public class SessionFilter implements Filter {
     private FilterConfig config = null;
 
@@ -33,13 +35,26 @@ public class SessionFilter implements Filter {
         HttpSession session = req.getSession();
         Principal principal = req.getUserPrincipal();
 
-        if (session.getAttribute("user") == null && principal instanceof RememberMeAuthenticationToken) {
+      /*  if (session.getAttribute("user") == null && principal instanceof RememberMeAuthenticationToken) {
             RememberMeAuthenticationToken userToken = (RememberMeAuthenticationToken) principal;
             System.out.println("princ = " + userToken.getName());
             User user = (User) userToken.getPrincipal();
             session.setAttribute("user", user);
+        }*/
+//        if(((HttpServletRequest) request).getRequestURI().equals(SecurityController.LOGIN)) {
+      System.out.println("req = " + req.getRequestURI() + " path = " + req.getContextPath());
+
+        if (principal != null && principal instanceof RememberMeAuthenticationToken) {
+        /*RememberMeAuthenticationToken userToken = (RememberMeAuthenticationToken) principal;
+        System.out.println("princ = " + userToken.getName());
+        User user = (User) userToken.getPrincipal();
+        session.setAttribute("user", user);*/
+            ((HttpServletResponse) response).sendRedirect(req.getContextPath() + "/403");
         }
-        chain.doFilter(request, response);
+        else {
+
+            chain.doFilter(request, response);
+        }
     }
 
     public void destroy() {

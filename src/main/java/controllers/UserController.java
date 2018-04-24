@@ -7,6 +7,7 @@ import database.entity.forms.UserChangeForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,10 +55,10 @@ public class UserController {
     private final String NAME = "UC#";
 
     @RequestMapping(value = CHANGE_PROFILE,method = RequestMethod.GET)
-    public String changePersonalGet(Model model) throws DbException {
+    public String changePersonalGet(Model model,@AuthenticationPrincipal User user) throws DbException {
         System.out.println("changePersonalGET");
 
-        User user = (User) session.getAttribute("user");
+//        User user = (User) session.getAttribute("user");
 
         List<Country> countries = searchService.findAllCountries();
 
@@ -77,7 +78,8 @@ public class UserController {
     @RequestMapping(value = CHANGE_PROFILE,method = RequestMethod.POST)
     public String changePersonalPost(@ModelAttribute(CHANGE_FORM) @Valid UserChangeForm userChangeForm,
                                  BindingResult bindingResult, Model model,
-                                 RedirectAttributes attr) throws DbException, UnsupportedEncodingException {
+                                 RedirectAttributes attr,
+                                     @AuthenticationPrincipal User user) throws DbException, UnsupportedEncodingException {
         System.out.println("changePersonalPOST");
         if (bindingResult.hasErrors()) {
             attr.addFlashAttribute(CHANGE_FORM, userChangeForm);
@@ -88,11 +90,11 @@ public class UserController {
             System.out.println("loginForm:\n");
             System.out.println(userChangeForm.getUsernameReal());
 
-            User user = (User) session.getAttribute(USER_SESSION);
+//            User user = (User) session.getAttribute(USER_SESSION);
 
             userService.updateUser(user, userChangeForm);
 
-            session.setAttribute(USER_SESSION,user);
+//            session.setAttribute(USER_SESSION,user);
 
         }
         return methodMap.redirectReq(
@@ -100,14 +102,15 @@ public class UserController {
     }
 
     @RequestMapping(value = DELETE_USER,method = RequestMethod.GET)
-    public String deleteUser() throws DbException {
+    public String deleteUser(@AuthenticationPrincipal User user) throws DbException {
 
-        User user = (User) session.getAttribute(USER_SESSION);
+//        User user = (User) session.getAttribute(USER_SESSION);
 
         userService.deleteUser(user.getId());
 
-        return methodMap.redirectReq(
-                SecurityController.NAME + SecurityController.LOGOUT_GET);
+        return "redirect:/logout";
+//        return methodMap.redirectReq(
+//                SecurityController.NAME + SecurityController.LOGOUT_GET);
     }
 
 

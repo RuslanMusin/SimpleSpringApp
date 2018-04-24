@@ -19,7 +19,9 @@
 
         <div id = "authentication">
 
-            <form th:action = "${(#mvc.url('SC#loginPost')).build()}" th:object="${loginForm}" method="post" id = "form" th:accept-charset="utf-8">
+            <!--<form th:action = "${(#mvc.url('SC#loginPost')).build()}" th:object="${loginForm}" method="post" id = "form" th:accept-charset="utf-8">-->
+            <form th:action = "@{/login}" th:object="${loginForm}" method="post" id = "form" th:accept-charset="utf-8">
+
 
                 <p>
                     <input type="text" th:field="*{username}"
@@ -52,7 +54,11 @@
                  th:include="form_btn :: form_btn_meth(controller='SC#',method='registration',btnValue=#{label.sign_up})" >
             </div></p>
 
-            <p th:if="${logErr == true}" th:text="#{error.login}"></p>
+            <!--<p th:if="${logErr == true}" th:text="#{error.login}"></p>-->
+
+            <p th:text="${error}"></p>
+
+            <p th:text="${msg}"></p>
 
             <p th:if="${item_not_found_error != null}" th:text="${item_not_found_error}"></p>
 

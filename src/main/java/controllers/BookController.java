@@ -6,6 +6,7 @@ import exceptions.NotFoundException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,10 +46,10 @@ public class BookController {
     }
 
     @RequestMapping(value = "/book/{id}",method = RequestMethod.GET)
-    public String showBook(@PathVariable("id") Integer id,Model model, HttpSession session) {
+    public String showBook(@PathVariable("id") Integer id,Model model, HttpSession session,@AuthenticationPrincipal User user) {
         System.out.println("books");
 
-        User user = (User) session.getAttribute("user");
+//        User user = (User) session.getAttribute("user");
         Book book;
 
         try {
@@ -63,6 +64,7 @@ public class BookController {
         System.out.println("authors book = " + book.getAuthors().get(0).getName());
 
         model.addAttribute("book",book);
+        model.addAttribute("user",user);
 
         return "books/book_content";
 

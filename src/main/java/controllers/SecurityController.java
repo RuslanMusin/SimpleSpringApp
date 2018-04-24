@@ -11,15 +11,19 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.RememberMeAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
@@ -61,6 +65,7 @@ public class SecurityController {
     public static final String NAME = "SC#";
 
     public static final String LOGIN_GET = "loginGet";
+    public static final String REGISTRATION_GET = "registration";
     public static final String PROFILE_GET = "profileGet";
     public static final String LOGOUT_GET = "logout";
 
@@ -83,19 +88,49 @@ public class SecurityController {
     @Autowired
     private Logger logger;
 
+   /* @Autowired
+    private User user;*/
+
     @RequestMapping("/")
     public String index(){
-        return methodMap.redirectReq(NAME + LOGIN_GET);
+
+//        return methodMap.redirectReq(NAME + LOGIN_GET);
+//        return "redirect:" + LOGIN;
+//        return "redirect:" + MvcUriComponentsBuilder.fromMappingName(NAME + LOGIN_GET).arg(0,"").arg(1,"").build();
+        return methodMap.redirectWithNullArgs(NAME + LOGIN_GET);
     }
 
     @RequestMapping(LOGIN)
     @PreAuthorize("isAnonymous()")
-    public String loginGet(Model model){
+    public String loginGet(@RequestParam(name = "error", required = false) String error,
+                           @RequestParam(name = "logout", required = false) String logout,
+                           @ModelAttribute(LOGIN_FORM) LoginForm loginForm,
+                           BindingResult bindingResult,
+                           HttpServletRequest request,
+                           Model model){
 
         if(!model.containsAttribute(LOGIN_FORM)) {
             model.addAttribute(LOGIN_FORM, new LoginForm());
         }else{
             model.addAttribute(LOGIN_ERR_PARAM,true);
+        }
+        System.out.println("error " +  error + " logout = " + logout);
+        if (error != null && !error.trim().equals("")) {
+            model.addAttribute("error", "Invalid username and password!");
+
+            //login form for update page
+            //if login error, get the targetUrl from session again.
+            /*String targetUrl = getRememberMeTargetUrlFromSession(request);
+            System.out.println(targetUrl);
+            if(StringUtils.hasText(targetUrl)){
+                model.addObject("targetUrl", targetUrl);
+                model.addObject("loginUpdate", true);
+            }
+*/
+        }
+
+        if (logout != null && !logout.trim().equals("")) {
+            model.addAttribute("msg", "You've been logged out successfully.");
         }
         /*if(err != null){
             model.addAttribute(LOGIN_ERR_PARAM,true);
@@ -104,7 +139,8 @@ public class SecurityController {
         return "index";
     }
 
-    @RequestMapping(value = LOGIN,method = RequestMethod.POST)
+
+    /*@RequestMapping(value = LOGIN,method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated()")
     public String loginPost(@ModelAttribute(LOGIN_FORM) @Valid LoginForm loginForm,
                         BindingResult bindingResult, Model model,RedirectAttributes attr) {
@@ -112,9 +148,19 @@ public class SecurityController {
         System.out.println("enter");
         if (bindingResult.hasErrors()) {
             logger.error("Login was failed.Passed some invalid data");
+            if(loginForm != null){
+                logger.info(loginForm.getUsername() + loginForm.getPassword());
+            }
+            if(bindingResult.hasErrors()){
+                logger.info("error " + bindingResult.getErrorCount());
+            }
             attr.addFlashAttribute(LOGIN_FORM, loginForm);
-            attr.addFlashAttribute(BINDING_RESULT + REGISTRATION_FORM,bindingResult);
-            return "index";
+            attr.addFlashAttribute(BINDING_RESULT + LOGIN_FORM,bindingResult);
+            return methodMap.redirectWithNullArgs(NAME + LOGIN_GET);
+
+//            return "redirect:" + LOGIN;
+//            return "redirect:" + MvcUriComponentsBuilder.fromMappingName(NAME + LOGIN_GET).build();
+
         } else {
 
             User user = (User) userService.loadUserByUsername(loginForm.getUsername());
@@ -126,19 +172,33 @@ public class SecurityController {
             session.setAttribute("user",user);
         }
         return methodMap.redirectReq(NAME + PROFILE_GET);
-    }
+    }*/
 
-    @RequestMapping(value = LOG_ERR,method = RequestMethod.GET)
+ /*   @RequestMapping(value = LOG_ERR,method = RequestMethod.POST)
     @PreAuthorize("isAnonymous()")
-    public String loginError(@RequestParam("error") String error, RedirectAttributes attr) {
-        attr.addAttribute(LOGIN_ERR_PARAM,true);
-        return methodMap.redirectReq(NAME + LOGIN_GET);
-    }
+    public String loginError(RedirectAttributes attr,@ModelAttribute(LOGIN_FORM) LoginForm loginForm, BindingResult bindingResult) {
+//        attr.addAttribute("error","true");
+//        return methodMap.redirectReq(NAME + LOGIN_GET);
+       *//* String path = MvcUriComponentsBuilder.fromMappingName(NAME + LOGIN_GET).build();
+        System.out.println("path = " + path);
+        return "redirect:" + path;*//*
+        logger.error("Login was failed.Passed some invalid data");
+        if(loginForm != null){
+            logger.info(loginForm.getUsername() + loginForm.getPassword());
+        }
+        if(bindingResult.hasErrors()){
+            logger.info("error " + bindingResult.getErrorCount());
+        }
+        attr.addFlashAttribute(LOGIN_FORM, loginForm);
+        attr.addFlashAttribute(BINDING_RESULT + REGISTRATION_FORM,bindingResult);
+        return methodMap.redirectWithNullArgs(NAME + LOGIN_GET);
+
+    }*/
 
     @RequestMapping(value = PROFILE,method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated()")
-    public String profileGet(Model model) {
-        User user = (User) session.getAttribute("user");
+    public String profileGet(Model model,@AuthenticationPrincipal User user) {
+//        User user = (User) session.getAttribute("user");
         model.addAttribute("user",user);
         return "user/personal_page";
     }
@@ -166,36 +226,45 @@ public class SecurityController {
         if (bindingResult.hasErrors()) {
             attr.addFlashAttribute(REGISTRATION_FORM, registrationForm);
             attr.addFlashAttribute(BINDING_RESULT + REGISTRATION_FORM,bindingResult);
-            return "redirect:" + REGISTRATION;
+//            return "redirect:" + REGISTRATION;
+            return methodMap.redirectReq(NAME + REGISTRATION_GET);
         } else {
             System.out.println("registrationForm:\n");
             System.out.println(registrationForm.getUsernameReal());
 
             userService.registerUser(registrationForm);
 
-            return methodMap.redirectReq(NAME + LOGIN_GET);
+//            return methodMap.redirectReq(NAME + LOGIN_GET);
+//            return "redirect:" + MvcUriComponentsBuilder.fromMappingName(NAME + LOGIN_GET).arg(0,"").arg(1,"").build();
+        return methodMap.redirectWithNullArgs(NAME + LOGIN_GET);
         }
     }
 
-    @RequestMapping(value = LOGOUT, method = RequestMethod.GET)
+   /* @RequestMapping(value = LOGOUT, method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated()")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
+    public String logout(HttpServletRequest request, HttpServletResponse response,RedirectAttributes attr) {
         User user = (User) session.getAttribute("user");
         List<SessionInformation> sessions = sessionRegistry.getAllSessions(user, false);
         sessionRegistry.getSessionInformation(sessions.get(0).getSessionId()).expireNow();
 
-           /* Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+           *//* Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             if (auth != null){
                 new SecurityContextLogoutHandler().logout(request, response, auth);
-            }*/
+            }*//*
 
         logger.info("Successful logout.Session was invalidate");
 
-        return methodMap.redirectReq(NAME + LOGIN_GET);
-    }
+        attr.addAttribute("logout","true");
 
+//        return methodMap.redirectReq(NAME + LOGIN_GET);
+        return methodMap.redirectWithNullArgs(NAME + LOGIN_GET);
+//        return "redirect:" + MvcUriComponentsBuilder.fromMappingName(NAME + LOGIN_GET).build();
+
+    }
+*/
     @RequestMapping(FORBIDDEN)
     public String forbidden() {
+        logger.info("access denied");
         return "403";
     }
 

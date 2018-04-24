@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @ComponentScan(basePackages = {"database","utils","services"},excludeFilters={
         @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE, value= UserService.class)})
 //@ComponentScan(basePackages = {"database","utils","services"})

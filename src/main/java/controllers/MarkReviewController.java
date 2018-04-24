@@ -8,6 +8,7 @@ import exceptions.AddReviewException;
 import exceptions.SetMarkException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,13 +71,14 @@ public class MarkReviewController {
                             @RequestParam String content,
                             @RequestParam String objId,
                             @RequestParam String type,
+                            @AuthenticationPrincipal User writer,
                             HttpSession session){
 
         String view = "";
 
         System.out.println("addReview");
 
-        User writer = (User) session.getAttribute("user");
+//        User writer = (User) session.getAttribute("user");
 
         Integer objectId = Integer.valueOf(objId);
 

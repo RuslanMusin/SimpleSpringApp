@@ -11,6 +11,14 @@ public class MethodMap {
     }
 
     public String getReq(String methodName){
-        return MvcUriComponentsBuilder.fromMappingName(methodName).build();
+        return MvcUriComponentsBuilder
+                .fromMappingName(methodName).build();
+    }
+
+    public String redirectWithNullArgs(String methodName){
+        String path = MvcUriComponentsBuilder.fromMappingName(methodName).build();
+        path = path.substring(0,path.indexOf("?"));
+        System.out.println("pathMeht = " + path);
+        return "redirect:" + path;
     }
 }

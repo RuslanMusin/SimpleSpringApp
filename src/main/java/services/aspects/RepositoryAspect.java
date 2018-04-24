@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 @Aspect
-//@Component
+@Component
 public class RepositoryAspect {
 
     private Logger logger = Logger.getLogger(getClass().getName());
 
-    @Pointcut("@annotation(org.springframework.data.)")
+    @Pointcut("within(@org.springframework.stereotype.Repository *)")
     public void repositoryClassMethods() {};
 
    /* @Pointcut("execution(* services.UserService*(..))")
@@ -28,7 +28,7 @@ public class RepositoryAspect {
     @After("some()")
     public void method2(){}*/
 
-    @After("repositoryClassMethods()")
+    @Around("repositoryClassMethods()")
     public Object measureMethodExecutionTime(ProceedingJoinPoint pjp) throws Throwable {
         String methodName = pjp.getSignature().getName();
         Object retval = null;

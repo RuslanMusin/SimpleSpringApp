@@ -1,5 +1,6 @@
 package config;
 
+import database.entity.User;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -65,8 +67,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .and()
                     .formLogin()
                         .loginPage("/login")
-                        .failureUrl("/log-err?error=true")
-                        .successForwardUrl("/login")
+                        .failureUrl("/login?error=true")
+//                        .successForwardUrl("/login")
+                        .defaultSuccessUrl("/profile",true)
                         .usernameParameter("username").passwordParameter("password")
                     .and()
                     .rememberMe()
@@ -75,8 +78,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .and()
                     .logout()
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/")
+                        .logoutSuccessUrl("/login?logout=true")
                         .deleteCookies("JSESSIONID")
+//                        .deleteCookies("remember-me")
                     .and()
                     .exceptionHandling().accessDeniedPage("/403")
                     .and()
@@ -112,6 +116,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new SessionRegistryImpl();
     }
 
+    /*@Bean
+    public User getLoggedInUser(){
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }*/
 
 }
 

@@ -63,7 +63,7 @@ public class SearchService {
 
     public List<Book> findBookByNameCriteria(String bookName,Integer numPage) {
         Page<Book> bookPage = bookRepository.findAll(repoSpecification.getBookSpecByName(bookName),
-                new PageRequest(5*numPage,5,new Sort(Sort.Direction.DESC, "name")
+                new PageRequest(numPage,5,new Sort(Sort.Direction.DESC, "name")
                 ));
 
         return bookPage.getContent();
@@ -73,7 +73,7 @@ public class SearchService {
     public List<Book> findPopularBooksCriteria(Integer numPage) {
         System.out.println("numbPage = " + numPage);
         Page<Book> bookPage = bookRepository.findAll(
-                new PageRequest(5*numPage,5,new Sort(Sort.Direction.DESC, "mark")
+                new PageRequest(numPage,5,new Sort(Sort.Direction.DESC, "mark")
                         .and(new Sort(Sort.Direction.DESC, "id"))
                 ));
 
