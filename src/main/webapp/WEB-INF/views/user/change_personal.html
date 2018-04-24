@@ -16,9 +16,14 @@
 
     <div id = "registration_form">
 
-        <form th:action = "@{/change-personal}" method="post" id = "form" th:object="${userForm}">
-            <p><input type="text" name="username" placeholder="Username"
-                      class="text" th:value="${userForm.username}"  autocomplete="off"/></p>
+        <form th:action = "${(#mvc.url('UC#changePersonalPost')).build()}" method="post" id = "form" th:object="${userChangeForm}">
+            <p><input type="text" name="usernameReal" placeholder="Username"
+                      class="text" th:value="${userChangeForm.usernameReal}"  autocomplete="off"/></p>
+            <div th:if="${#fields.hasErrors('usernameReal')}">
+                <p th:each="err : ${#fields.errors('usernameReal')}"
+                   th:text="${err}" th:class="error">Username error
+                </p>
+            </div>
 
             <div th:replace="user_dop_data :: dop_data(countries = ${countries})"></div>
 

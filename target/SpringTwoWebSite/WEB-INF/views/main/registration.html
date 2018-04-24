@@ -5,61 +5,62 @@
 
 <body>
 
-    <th:block
-            th:with="email=${session.email},
-            selCountry=${session.countryId},
-            username=${session.username},
-            gender=${session.gender}">
+    <th:block>
+
 
     <div id = "registration_div">
 
         <div id = "registration_form">
 
-            <form th:action = "@{/registration}" method="POST" th:object="${userForm}">
+            <form th:action = "${(#mvc.url('SC#registrationPost')).build()}" method="POST" th:object="${registrationForm}">
 
                 <p>
-                    <input type="text" th:field="*{username}"
-                           th:class="text" th:placeholder="#{label.username}"/>
+                    <input type="text" th:field="*{username}" autocomplete="of"
+                           th:class="text" th:placeholder="#{label.email}"/>
                 </p>
                 <div th:if="${#fields.hasErrors('username')}">
                     <p th:each="err : ${#fields.errors('username')}"
-                       th:text="${err}">Username error
+                       th:text="${err}" th:class="error">Username error
                     </p>
                 </div>
 
                 <p>
-                    <input type="text" th:field="*{email}"
-                           th:class="text" th:placeholder="#{label.email}"/>
+                    <input type="text" th:field="*{usernameReal}" autocomplete="of"
+                           th:class="text" th:placeholder="#{label.usernameReal}"/>
                 </p>
-                <div th:if="${#fields.hasErrors('email')}">
-                    <p th:each="err : ${#fields.errors('email')}"
-                       th:text="${err}">Email error
+                <div th:if="${#fields.hasErrors('usernameReal')}">
+                    <p th:each="err : ${#fields.errors('usernameReal')}"
+                       th:text="${err}" th:class="error">Email error
                     </p>
                 </div>
 
                 <p>
-                    <input type="text" th:field="*{password}"
+                    <input type="password" th:field="*{password}" autocomplete="of"
                            th:class="text" th:placeholder="#{label.password}"/>
                 </p>
                 <div th:if="${#fields.hasErrors('password')}">
                     <p th:each="err : ${#fields.errors('password')}"
-                       th:text="${err}">Email error
+                       th:text="${err}" th:class="error">Email error
                     </p>
                 </div>
 
                 <p>
-                    <input type="text" th:field="*{passwordAgain}"
+                    <input type="password" th:field="*{passwordRepeat}" autocomplete="of"
                            th:class="text" th:placeholder="#{label.confirm_password}"/>
                 </p>
-                <div th:if="${#fields.hasErrors('passwordAgain')}">
-                    <p th:each="err : ${#fields.errors('passwordAgain')}"
-                       th:text="${err}">Email error
+                <div th:if="${#fields.hasErrors('passwordRepeat')}">
+                    <p th:each="err : ${#fields.errors('passwordRepeat')}"
+                       th:text="${err}" th:class="error">Email error
                     </p>
+                </div>
+
+                <div th:if="${#fields.hasErrors('global')}">
+                    <p th:each="err : ${#fields.errors('global')}" th:text="${err}" th:class="error">Input is incorrect</p>
                 </div>
 
                 <div th:replace="user_dop_data :: dop_data(countries = ${countries})"></div>
 
-                <input type="submit" value="Register"/>
+                <input type="submit" value="Register" class="button"/>
 
             </form>
 

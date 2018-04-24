@@ -1,6 +1,6 @@
 package utils;
 
-import utils.exceptions.DbException;
+import exceptions.DbException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

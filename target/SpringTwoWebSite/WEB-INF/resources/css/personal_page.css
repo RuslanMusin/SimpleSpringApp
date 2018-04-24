@@ -12,7 +12,7 @@ body{
 
 }
 
-#personal_div{
+/*#personal_div{
     text-align: left;
     background: #fff;
     width: 70%;
@@ -22,7 +22,7 @@ body{
     margin :0 auto;
     padding: 0;
     box-shadow: 0 20px 40px rgba(0,0,0,.4);
-}
+}*/
 
 #user_data{
     margin: auto;

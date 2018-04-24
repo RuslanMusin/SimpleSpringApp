@@ -1,7 +1,15 @@
 package utils.validators;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.core.env.Environment;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import static database.entity.Gender.FEMALE;
+import static database.entity.Gender.MALE;
 
 public class GenderConstraintValidator implements
         ConstraintValidator<GenderConstraint, String> {
@@ -11,9 +19,11 @@ public class GenderConstraintValidator implements
     }
 
     @Override
-    public boolean isValid(String contactField,
+    public boolean isValid(String gender,
                            ConstraintValidatorContext cxt) {
-        return contactField.equals("мужской") || contactField.equals("женский");
+
+        return FEMALE.toString().equals(gender) ||
+                MALE.toString().equals(gender);
     }
 
 }

@@ -1,9 +1,14 @@
 package database.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "countries")
@@ -15,13 +20,9 @@ public class Country implements Identified,Serializable {
     private Integer id;
 
     @Column
+    @NotBlank(message = "{error.not_empty}")
+    @Size(min = 1,max = 100,message = "{error.length}")
     private String name;
-
-    @ManyToMany(mappedBy = "countries")
-    private List<Movie> movies;
-
-    @OneToMany(mappedBy = "country")
-    private List<User> users;
 
     public Country(Integer id, String name) {
         this.id = id;
@@ -38,6 +39,14 @@ public class Country implements Identified,Serializable {
             }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 18 * hash + this.id;
+        hash = 18 * hash + Objects.hashCode(this.name);
+        return hash;
     }
 
     @Override
@@ -58,19 +67,4 @@ public class Country implements Identified,Serializable {
         this.name = name;
     }
 
-    public List<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 }

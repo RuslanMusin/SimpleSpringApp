@@ -1,11 +1,11 @@
 package config;
 
+import org.apache.log4j.Logger;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -13,15 +13,22 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import services.UserService;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"database.entity"})
-@EnableJpaRepositories(basePackages = {"database.repository"})
+@ComponentScan(basePackages = {"database","utils","services"},excludeFilters={
+        @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE, value= UserService.class)})
+//@ComponentScan(basePackages = {"database","utils","services"})
+@EnableJpaRepositories(basePackages = {"database.hibernate_repository"})
 @PropertySource("classpath:db_properties/postgres.properties")
+@EnableAspectJAutoProxy
+@Import(SecurityConfig.class)
 public class RootConfig {
 
     @Autowired
@@ -67,4 +74,31 @@ public class RootConfig {
 
         return properties;
     }
+
+    @Bean(name = "filterMultipartResolver")
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setDefaultEncoding("UTF-8");
+        multipartResolver.setMaxUploadSize(500000000);
+        return multipartResolver;
+    }
+
+    @Bean
+    public Logger getLogger() {
+        return Logger.getLogger(RootConfig.class);
+    }
+
+    @Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource res = new ResourceBundleMessageSource();
+        res.setBasenames("/i18n/messages");
+        res.setCacheSeconds(0);
+        res.setDefaultEncoding("UTF-8");
+        res.setUseCodeAsDefaultMessage(false);
+        return res;
+    }
+
+
+
+
 }

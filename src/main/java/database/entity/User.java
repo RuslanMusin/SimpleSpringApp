@@ -1,60 +1,49 @@
 package database.entity;
 
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-import utils.validators.GenderConstraint;
+import org.springframework.security.core.CredentialsContainer;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
-public class User implements Identified,Serializable {
+public class User implements Identified,CredentialsContainer, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id", unique = true, nullable = false)
-//    @NotNull(message = "Id can't be null")
     private Integer id;
 
-    @Column(unique = true)
+    @Column(name = "email",unique = true)
     @NotBlank(message = "Email can't be null")
-    @Size(min = 5,max = 100,message = "Email's length must be between 6 and 100")
-    @Email(message = "Email has to be correct")
-    private String email;
+    private String username;
 
     @Column
     @NotBlank(message = "Password can't be empty")
-    @Size(min = 6,max = 100,message = "Password's length must be between 6 and 100")
     private String password;
 
-    @Column
-    @NotBlank(message = "Username can't be empty")
-    @Size(min = 6,max = 100,message = "Username's length must be between 6 and 100")
-    private String username;
+    @Column(name = "username")
+    private String usernameReal;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     @JoinColumn(name="country_id")
     private Country country;
 
-    @ManyToOne
-    @JoinColumn(name="user_right",referencedColumnName = "right_id")
-    private Right rights;
-
     @Column
-    @NotBlank(message = "Gender can't be empty")
-    @GenderConstraint
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
-    @Column(name = "cookie_id")
-    @NotNull(message = "User should have some cookie")
-    private String cookieId;
+    @ManyToMany(fetch = FetchType.EAGER, cascade={CascadeType.MERGE})
+    @JoinTable(
+            name = "users_users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_role_id")
+    )
+    private List<UserAuthority> authorities = new ArrayList<>();
 
     public User() {
     }
@@ -69,16 +58,28 @@ public class User implements Identified,Serializable {
         return false;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 78 * hash + this.id;
+        hash = 78 * hash + Objects.hashCode(this.usernameReal);
+        hash = 78 * hash + Objects.hashCode(this.username);
+        hash = 78 * hash + Objects.hashCode(this.password);
+        hash = 78 * hash + Objects.hashCode(this.country);
+        hash = 78 * hash + Objects.hashCode(this.gender);
+        return hash;
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public void setUsernameReal(String username) {
+        this.usernameReal = username;
+    }
+
+    public String getUsernameReal() {
+        return usernameReal;
     }
 
     public Country getCountry() {
@@ -89,11 +90,11 @@ public class User implements Identified,Serializable {
         this.country = country;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -105,8 +106,8 @@ public class User implements Identified,Serializable {
         this.id = id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String email) {
+        this.username = email;
     }
 
     public String getPassword() {
@@ -117,20 +118,42 @@ public class User implements Identified,Serializable {
         this.password = password;
     }
 
-    public String getCookieId() {
-        return cookieId;
+    public void addAuthority(UserAuthority authority) {
+        this.authorities.add(authority);
     }
 
-    public void setCookieId(String cookieId) {
-        this.cookieId = cookieId;
+    @Override
+    public List<UserAuthority> getAuthorities() {
+        return authorities;
     }
 
-    public Right getRights() {
-        return rights;
+    public void setAuthorities(List<UserAuthority> authorities) {
+        this.authorities = authorities;
     }
 
-    public void setRights(Right rights){
-        this.rights = rights;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public void eraseCredentials() {
+        this.password = null;
     }
 
 }

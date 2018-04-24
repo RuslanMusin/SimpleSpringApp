@@ -1,15 +1,15 @@
-.ul_menu {
+/*.ul_menu {
     list-style-type: none;
     height: 46px;
     margin: 0;
     padding:0;
-    /*overflow: hidden;*/
+    !*overflow: hidden;*!
     background-color: #333;
 }
 
 .ul_menu li {
     float: left;
-    /*width: 10%;*/
+    !*width: 10%;*!
     box-sizing: border-box;
 }
 
@@ -50,7 +50,7 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
+}*/
 
 #search{
     /*width: 45%;*/
@@ -59,16 +59,18 @@
     margin: 15px 20px;
 }
 
+/*
 input[name=search] {
     width: 200px;
     float: right;
     transition: width 0.6s ;
 }
+*/
 
 
-.right{
+/*.right{
     float: right;
-}
+}*/
 
 #menuDiv{
     text-align: left;
@@ -82,7 +84,77 @@ input[name=search] {
     box-shadow: 0 20px 20px rgba(0,0,0,.4);
 }
 
-#menu_search{
+.container{
+    text-align: left;
+    background: #fff;
+    width: 70%;
+    height: 100%;
+    min-height : 450px;
+    min-width: 730px;
+    margin :0 auto;
+    padding: 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,.4);
+}
+
+.dropdown-menu{
+    width: auto;
+    min-width: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-custom {
+    /*background-color: #ff5500;*/
+    background-color: black;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgb(255,255,255);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+#menuDiv li a:hover{
+    color: #f10000;
+}
+#menu_search_form{
+    width: inherit;
+}
+
+#div_autocomplete{
+    width: inherit;
+    z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2); ;
+}
+
+#data:hover{
+    background-color: #f9f9f9;
+}
+
+#searchData{
+    width: 100%;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #f10000;
+}
+
+.error{
+    color: #f10000;
+}
+/*#menu_search{
     margin-top: 12px;
 }
 
@@ -98,14 +170,7 @@ input[name=search] {
     width: 100%;
 }
 
-#div_autocomplete{
-    width: inherit;
-    z-index: 1;
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2); ;
-}
+
 
 #searchData{
     width: 100%;
@@ -148,5 +213,7 @@ input[name=search] {
     margin-right:39px;
 }
 
+.menu-div{
 
+}*/
 

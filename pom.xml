@@ -13,6 +13,7 @@
   <!-- Spring -->
     <spring.version>4.2.4.RELEASE</spring.version>
     <spring-data-jpa.version>1.11.1.RELEASE</spring-data-jpa.version>
+    <spring-security.version>4.2.2.RELEASE</spring-security.version>
 
   <!-- Project specific stuff -->
   <java.validator.version>1.1.0.Final</java.validator.version>
@@ -22,6 +23,8 @@
 
   <!-- Bean validation -->
   <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+
+    <aspectj.version>1.8.5</aspectj.version>
 
 
   </properties>
@@ -45,6 +48,29 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aop</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
       <version>${spring.version}</version>
     </dependency>
 
@@ -116,10 +142,50 @@
     </dependency>
 
     <dependency>
+      <groupId>org.thymeleaf.extras</groupId>
+      <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+      <version>3.0.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
-      <version>3.2.5.RELEASE</version>
+      <version>${spring-security.version}</version>
     </dependency>
+
+    <!-- Spring Security -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${spring-security.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${spring-security.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>${spring-security.version}</version>
+    </dependency>
+
+   <!-- <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-acl</artifactId>
+      <version>${spring-security.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>${spring-security.version}</version>
+    </dependency>-->
+
+    <!--<dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache</artifactId>
+      <version>2.9.0</version>
+    </dependency>-->
 
     <dependency>
         <groupId>javax</groupId>
@@ -166,6 +232,22 @@
       <type>jar</type>
     </dependency>
 
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.3.1</version>
+    </dependency>
+    <dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>1.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
 
   </dependencies>
 
@@ -176,8 +258,8 @@
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
               <configuration>
-                  <source>1.7</source>
-                  <target>1.7</target>
+                  <source>1.8</source>
+                  <target>1.8</target>
               </configuration>
           </plugin>
       </plugins>

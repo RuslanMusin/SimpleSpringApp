@@ -11,6 +11,10 @@ body{
 
 }
 
+.error {
+    color: #f10000;
+}
+
 #authentication{
     margin: auto;
     margin-bottom: 5%;
@@ -25,7 +29,7 @@ body{
     min-width: 300px;
     margin :auto;
     margin-top: 120px;
-    padding: 10px;
+    padding: 0 0 10px 10px;
     box-shadow: 0 20px 40px rgba(0,0,0,.4);
 }
 

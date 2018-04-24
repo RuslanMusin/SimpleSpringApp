@@ -1,26 +1,66 @@
 package config;
 
+import database.entity.Author;
+import database.hibernate_repository.AuthorRepository;
+import database.hibernate_repository.CountryRepository;
+import database.hibernate_repository.GenreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.annotation.Order;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.repository.core.support.RepositoryFactorySupport;
+import org.springframework.data.repository.support.RepositoryInvokerFactory;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import services.UserService;
+import utils.converters.AuthorIdConverter;
+import utils.converters.CountryIdConverter;
+import utils.converters.GenreIdConverter;
+import utils.converters.StringDateConverter;
 
 import java.util.Locale;
 
 @Configuration
-@ComponentScan({"controllers","services"})
+/*@ComponentScan(value = {"controllers","services","database","utils"},excludeFilters={
+        @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE, value= UserService.class)})*/
+@ComponentScan(value = {"controllers"})
 @EnableWebMvc
+@EnableAspectJAutoProxy
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@Import({SecurityConfig.class })
 public class WebConfig extends WebMvcConfigurerAdapter {
+
+    @Autowired
+    private CountryRepository countryRepository;
+
+    @Autowired
+    private GenreRepository genreRepository;
+
+    @Autowired
+    private AuthorRepository authorRepository;
+
+    @Autowired
+    private MessageSource messageSource;
 
     @Bean
     @Description("Thymeleaf Template Resolver")
@@ -39,7 +79,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
-        templateEngine.setTemplateEngineMessageSource(messageSource());
+        templateEngine.addDialect(new SpringSecurityDialect());
+        templateEngine.setEnableSpringELCompiler(true);
+        templateEngine.setTemplateEngineMessageSource(messageSource);
         return templateEngine;
     }
 
@@ -65,19 +107,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 .addResourceLocations("/WEB-INF/resources/");
     }
 
-    @Bean
-    public MessageSource messageSource() {
-        ResourceBundleMessageSource res = new ResourceBundleMessageSource();
-        res.setBasenames("/i18n/messages");
-        res.setCacheSeconds(0);
-        res.setDefaultEncoding("UTF-8");
-        res.setUseCodeAsDefaultMessage(false);
-        return res;
-    }
+
 
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+        localeResolver.setDefaultLocale(new Locale("ru"));
         return localeResolver;
     }
 
@@ -96,13 +131,21 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public LocalValidatorFactoryBean validator() {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
-        bean.setValidationMessageSource(messageSource());
+        bean.setValidationMessageSource(messageSource);
         return bean;
     }
 
     @Override
     public Validator getValidator() {
         return validator();
+    }
+
+    @Override
+    public void addFormatters (FormatterRegistry registry) {
+        registry.addConverter(new AuthorIdConverter(authorRepository));
+        registry.addConverter(new CountryIdConverter(countryRepository));
+        registry.addConverter(new GenreIdConverter(genreRepository));
+        registry.addConverter(new StringDateConverter());
     }
 }
 

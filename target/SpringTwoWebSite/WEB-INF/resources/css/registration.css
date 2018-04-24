@@ -1,9 +1,18 @@
+html,body{
+    margin: 0;
+    min-height: 100%;
+}
+
 body{
     background-image: url(../images/indexFon.jpg);
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: cover;
 
+}
+
+.error {
+    color: #f10000;
 }
 
 #registration_form{

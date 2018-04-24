@@ -1,8 +1,13 @@
 package database.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "genres")
@@ -14,10 +19,9 @@ public class Genre implements Identified,Serializable {
     private Integer id;
 
     @Column(unique = true)
+    @NotBlank(message = "{error.not_empty}")
+    @Size(min = 1,max = 50,message = "{error.length}")
     private String name;
-
-    @ManyToMany(mappedBy = "genres")
-    private List<Movie> movies;
 
     @Override
     public boolean equals(Object obj) {
@@ -27,6 +31,14 @@ public class Genre implements Identified,Serializable {
             }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + this.id;
+        hash = 41 * hash + Objects.hashCode(this.name);
+        return hash;
     }
 
     @Override
@@ -45,13 +57,5 @@ public class Genre implements Identified,Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
     }
 }

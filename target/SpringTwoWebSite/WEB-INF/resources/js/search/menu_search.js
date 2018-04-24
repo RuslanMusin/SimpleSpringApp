@@ -3,12 +3,14 @@ $(document).on("input", "#menuInput", function() {
     var searchType = document.getElementById('menuType').value;
     var autocomplete = $("#div_autocomplete");
     if(queryMovie !== ""){
-    var url = "/searchMovies?movie=" + queryMovie + "&"
-        + "searchType=" + searchType + "&"
+    var url = "/searchBooks?query=" + queryMovie + "&"
+        + "type=" + searchType + "&"
         + "numPage=" + 0;
 
-        $.get(url, function(responseXml) {
-            autocomplete.html($(responseXml).find("data").html());
+        $.get(url, function(data) {
+            // autocomplete.html($(responseXml).find("#data").html());
+            autocomplete.html(data);
+            // $("#dataDiv").html(data);
             autocomplete.css("display", "block");
         });
     }else{

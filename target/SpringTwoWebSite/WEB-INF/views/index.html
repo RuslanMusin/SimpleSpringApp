@@ -9,31 +9,31 @@
     <body>
     <div id = "allForms">
 
-        <p><span th:text="#{lang.change}"></span>:
-        <select id="locales">
-            <option value=""></option>
-            <option value="en" th:text="#{lang.en}"></option>
-            <option value="ru" th:text="#{lang.ru}"></option>
-            <option value="esp" th:text="#{lang.esp}"></option>
-        </select></p>
+        <div class="lang">
+            <button class="langbtn" th:text="#{lang.ru}">Dropdown</button>
+            <div class="lang-content">
+                <a th:href="'?lang=' + #{lang.ru}" th:text="#{lang.ru}"></a>
+                <a th:href="'?lang=' + #{lang.en}" th:text="#{lang.en}"></a>
+            </div>
+        </div>
 
         <div id = "authentication">
 
-            <form th:action = "@{/}" th:object="${userForm}" method="post" id = "form">
+            <form th:action = "${(#mvc.url('SC#loginPost')).build()}" th:object="${loginForm}" method="post" id = "form" th:accept-charset="utf-8">
 
                 <p>
-                    <input type="text" th:field="*{email}"
+                    <input type="text" th:field="*{username}"
                        th:class="text" th:placeholder="#{label.email}"/>
                 </p>
-                <div th:if="${#fields.hasErrors('email')}">
-                    <p th:each="err : ${#fields.errors('email')}"
+                <div th:if="${#fields.hasErrors('username')}">
+                    <p th:each="err : ${#fields.errors('username')}"
                         th:text="${err}">Email error
                     </p>
                 </div>
 
 
                 <p>
-                <input type="text" th:field="*{password}"
+                <input type="password" th:field="*{password}"
                        th:class="text" th:placeholder="#{label.password}"/></p>
                 <div th:if="${#fields.hasErrors('password')}">
                     <p th:each="err : ${#fields.errors('password')}"
@@ -41,18 +41,26 @@
                     </p>
                 </div>
 
+                <input id="remember_me" name="remember-me" type="checkbox"/>
+                <label for="remember_me" class="inline">Remember me</label>
 
                 <p><input type="submit" th:value="#{label.sign_in}" th:class="button"/></p>
 
             </form>
 
             <p><div id="registration"
-                 th:include="form_btn :: form_btn(actionPath='/registration',btnValue=#{label.sign_up})" >
+                 th:include="form_btn :: form_btn_meth(controller='SC#',method='registration',btnValue=#{label.sign_up})" >
             </div></p>
+
+            <p th:if="${logErr == true}" th:text="#{error.login}"></p>
+
+            <p th:if="${item_not_found_error != null}" th:text="${item_not_found_error}"></p>
 
         </div>
 
     </div>
+
+    <th:block th:replace="bottom :: bottom"></th:block>
 
     </body>
 
