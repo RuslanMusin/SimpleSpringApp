@@ -22,9 +22,16 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+import static utils.Const.REVIEWS_ATTR;
+
 @Controller
 @PreAuthorize("isAuthenticated()")
 public class MarkReviewController {
+
+    private static final String SET_MARK = "/setReviewedMark";
+    private static final String ADD_REVIEW = "/addReview";
+
+    private static final String NAME = "MRC#";
 
     @Autowired
     private SetVoteService voteService;
@@ -32,86 +39,55 @@ public class MarkReviewController {
     @Autowired
     private AddReviewService addReviewService;
 
-    @RequestMapping(value = "/setReviewedMark",method = RequestMethod.POST)
+    @RequestMapping(value = SET_MARK,method = RequestMethod.POST)
     public String setMark(Model model,
                           @RequestParam String mark,
                           @RequestParam String markId,
                           @RequestParam String userId,
                           @RequestParam String typeMark){
-
-        String view = "";
-        Integer commonMark = null;
-
-        System.out.println("setMark");
-
         try {
-
-            commonMark = voteService.addMark(mark, markId, userId, typeMark);
-
-            System.out.println("commonMark = " + commonMark);
-
+            Integer commonMark = voteService.addMark(mark, markId, userId, typeMark);
             model.addAttribute("flag", true);
             model.addAttribute("commonMark", commonMark);
             model.addAttribute("userMark", mark);
             System.out.println("flag = " + true + " comMark = " + commonMark + " mark = " + mark);
-            view = "xml_parts/user/set_mark";
-
         } catch (Exception e) {
-
             throw new SetMarkException(typeMark);
-
         }
 
-        return view;
+        return "xml_parts/user/set_mark";
     }
 
-    @RequestMapping(value = "/addReview",method = RequestMethod.POST)
+    @RequestMapping(value = ADD_REVIEW,method = RequestMethod.POST)
     public String addReview(Model model,
                             @RequestParam String title,
                             @RequestParam String content,
                             @RequestParam String objId,
                             @RequestParam String type,
-                            @AuthenticationPrincipal User writer,
-                            HttpSession session){
-
-        String view = "";
-
-        System.out.println("addReview");
-
-//        User writer = (User) session.getAttribute("user");
+                            @AuthenticationPrincipal User writer){
 
         Integer objectId = Integer.valueOf(objId);
-
         try {
-
             switch (type) {
                 case Const.KEY_BOOK_TYPE:
                     addReviewService.addBookReview(title,content,objId,writer);
                     List<BookReview> bookReviews = addReviewService.getBookReviews(objectId);
-                    model.addAttribute("reviews",bookReviews);
+                    model.addAttribute(REVIEWS_ATTR,bookReviews);
                     System.out.println("reviews = " + (bookReviews.size()));
                     break;
 
                 case Const.KEY_AUTHOR_TYPE:
                     addReviewService.addAuthorReview(title,content,objId,writer);
                     List<AuthorReview> authorReviews = addReviewService.getAuthorReviews(objectId);
-                    model.addAttribute("reviews",authorReviews);
+                    model.addAttribute(REVIEWS_ATTR,authorReviews);
                     System.out.println("reviews = " + (authorReviews.size()));
                     break;
             }
-
-
-
-           view = "xml_parts/user/add_review";
-
         } catch (Exception e) {
-            Const.sys("ex mess = " + e.getMessage());
             throw new AddReviewException(type,objectId,e.getMessage());
 
         }
 
-        return view;
+        return "xml_parts/user/add_review";
     }
-
-
 }

@@ -5,7 +5,8 @@ import database.entity.Gender;
 import database.entity.User;
 import database.entity.forms.UserChangeForm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,13 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import services.IUserService;
 import services.SearchService;
-import services.UserService;
-import exceptions.DbException;
 import utils.MethodMap;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import static utils.Const.*;
@@ -34,32 +31,28 @@ public class UserController {
 
     private static final String DELETE_USER = "/delete-user";
     private static final String CHANGE_PROFILE = "/change-personal";
+    private static final String LOGOUT = "/logout";
 
     private static final String CHANGE_FORM = "userChangeForm";
-
-    @Autowired
-    private MethodMap methodMap;
-
-    @Autowired
-    private HttpSession session;
-
-    @Autowired
-//    @Qualifier(value = "userService")
-    private IUserService userService;
-
-    @Autowired
-    private SearchService searchService;
 
     private final String CHANGE_PERSONAL_GET = "changePersonalGet";
 
     private final String NAME = "UC#";
 
+    @Autowired
+    private MethodMap methodMap;
+
+    @Autowired
+    private IUserService userService;
+
+    @Autowired
+    private SearchService searchService;
+
+    @Autowired
+    private MessageSource messageSource;
+
     @RequestMapping(value = CHANGE_PROFILE,method = RequestMethod.GET)
-    public String changePersonalGet(Model model,@AuthenticationPrincipal User user) throws DbException {
-        System.out.println("changePersonalGET");
-
-//        User user = (User) session.getAttribute("user");
-
+    public String changePersonalGet(Model model,@AuthenticationPrincipal User user){
         List<Country> countries = searchService.findAllCountries();
 
         if(!model.containsAttribute(CHANGE_FORM)) {
@@ -77,40 +70,25 @@ public class UserController {
 
     @RequestMapping(value = CHANGE_PROFILE,method = RequestMethod.POST)
     public String changePersonalPost(@ModelAttribute(CHANGE_FORM) @Valid UserChangeForm userChangeForm,
-                                 BindingResult bindingResult, Model model,
-                                 RedirectAttributes attr,
-                                     @AuthenticationPrincipal User user) throws DbException, UnsupportedEncodingException {
-        System.out.println("changePersonalPOST");
+                                    BindingResult bindingResult, RedirectAttributes attr,
+                                     @AuthenticationPrincipal User user) {
         if (bindingResult.hasErrors()) {
             attr.addFlashAttribute(CHANGE_FORM, userChangeForm);
             attr.addFlashAttribute(BINDING_RESULT + CHANGE_FORM,bindingResult);
             return methodMap.redirectReq(NAME + CHANGE_PERSONAL_GET);
         } else {
-
-            System.out.println("loginForm:\n");
-            System.out.println(userChangeForm.getUsernameReal());
-
-//            User user = (User) session.getAttribute(USER_SESSION);
-
-            userService.updateUser(user, userChangeForm);
-
-//            session.setAttribute(USER_SESSION,user);
-
+            userService.updateUser(user.getId(), userChangeForm);
+            attr.addFlashAttribute(UPDATE_MESSAGE,messageSource.getMessage(
+                    "message.edit_user",null, LocaleContextHolder.getLocale()));
         }
         return methodMap.redirectReq(
                 SecurityController.NAME + SecurityController.PROFILE_GET);
     }
 
     @RequestMapping(value = DELETE_USER,method = RequestMethod.GET)
-    public String deleteUser(@AuthenticationPrincipal User user) throws DbException {
-
-//        User user = (User) session.getAttribute(USER_SESSION);
-
+    public String deleteUser(@AuthenticationPrincipal User user) {
         userService.deleteUser(user.getId());
-
-        return "redirect:/logout";
-//        return methodMap.redirectReq(
-//                SecurityController.NAME + SecurityController.LOGOUT_GET);
+        return "redirect:" + LOGOUT;
     }
 
 

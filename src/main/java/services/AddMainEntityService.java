@@ -6,13 +6,8 @@ import database.entity.forms.BookForm;
 import database.hibernate_repository.*;
 import exceptions.AddPhotoException;
 import exceptions.AddRelatedEntitiesException;
-import exceptions.DbException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
+import org.springframework.transaction.annotation.Transactional;
 import utils.Const;
 import utils.SavePhotoUtil;
 
@@ -34,13 +29,10 @@ public class AddMainEntityService {
     private SearchService searchService;
 
     @Autowired
-    private MessageSource messageSource;
-
-    @Autowired
     private SavePhotoUtil savePhotoUtil;
 
+    @Transactional
     public void insertAuthor(AuthorForm authorForm, HttpServletRequest req) throws AddPhotoException {
-
         Author author = new Author();
         author.setName(authorForm.getName());
         author.setSurname(authorForm.getSurname());
@@ -53,10 +45,8 @@ public class AddMainEntityService {
         authorRepository.save(author);
     }
 
-
+    @Transactional
     public void insertBook(BookForm bookForm, HttpServletRequest req) throws AddPhotoException, AddRelatedEntitiesException {
-        System.out.println("insertUser");
-
         Book book = new Book();
         book.setName(bookForm.getName());
         book.setDescription(bookForm.getDescription());
@@ -133,17 +123,6 @@ public class AddMainEntityService {
             }
         }
         return bindList;
-    }
-
-
-    public void printErrors(BindingResult bindingResult){
-        for(ObjectError error:bindingResult.getAllErrors()) {
-            System.out.println("error : " + error.toString());
-        }
-    }
-
-    public void sys(String string){
-        System.out.println(string);
     }
 }
 

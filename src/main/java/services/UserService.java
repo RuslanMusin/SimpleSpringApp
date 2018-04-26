@@ -11,19 +11,16 @@ import database.hibernate_repository.UserRepository;
 import exceptions.NotFoundException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import exceptions.DbException;
 import utils.Const;
 
-import java.io.UnsupportedEncodingException;
 
-
-import static utils.Const.USUAL_ROLE;
+import static utils.Const.ADMIN_ROLE;
 
 @Service
 public class UserService implements IUserService {
@@ -43,8 +40,6 @@ public class UserService implements IUserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-
-
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
         System.out.println("username = " + username);
@@ -52,13 +47,8 @@ public class UserService implements IUserService {
 
         logger.debug("loadUser");
         if (user == null) {
-            System.out.println("load user = null");
-            throw new UsernameNotFoundException(
-                    "No user found with username: "+ username);
-
-
+            throw new UsernameNotFoundException("No user found with username: "+ username);
         }
-
         return user;
     }
 
@@ -66,7 +56,7 @@ public class UserService implements IUserService {
     public void registerUser(RegistrationForm registrationForm) {
 
         User user = new User();
-        UserAuthority authority = userAuthorityRepo.findByAuthority(USUAL_ROLE);
+        UserAuthority authority = userAuthorityRepo.findByAuthority(ADMIN_ROLE);
 
         user.setUsernameReal(registrationForm.getUsernameReal());
         user.setUsername(registrationForm.getUsername());
@@ -80,32 +70,17 @@ public class UserService implements IUserService {
         System.out.println("saved");
     }
 
-    public User getUser(LoginForm loginForm) {
-
-        System.out.println("registrationForm : " + loginForm.getUsername());
-
-        User user = userRepository.findByUsername(loginForm.getUsername());
-
-        if(user == null){
-            throw new NotFoundException(Const.KEY_USER_TYPE);
-        }
-
-        System.out.println("user:\n");
-        System.out.println(user.getCountry().getName());
-        System.out.println(user.getUsernameReal());
-
-        return user;
-    }
-
+    @Transactional
     public void deleteUser(int id){
         userRepository.delete(id);
     }
 
-    public void updateUser(User user,UserChangeForm userChangeForm) {
+    @Transactional
+    public void updateUser(int id,UserChangeForm userChangeForm) {
+        User user = userRepository.findOne(id);
         user.setUsernameReal(userChangeForm.getUsernameReal());
         user.setCountry(userChangeForm.getCountry());
         user.setGender(Gender.valueOf(userChangeForm.getGender()));
-
         userRepository.save(user);
     }
 

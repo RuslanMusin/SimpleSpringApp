@@ -5,9 +5,9 @@ import database.entity.Country;
 import database.entity.User;
 import database.entity.forms.AuthorForm;
 import exceptions.AddPhotoException;
-import exceptions.AddRelatedEntitiesException;
 import exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,31 +19,25 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import services.AddMainEntityService;
 import services.SearchService;
 import utils.Const;
-import exceptions.DbException;
 import utils.MethodMap;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
-import static utils.Const.BINDING_RESULT;
+import static utils.Const.*;
 
 @Controller
 @PreAuthorize("isAuthenticated()")
 public class AuthorController {
 
     private static final String AUTHORS_LIST = "/authors";
-
     private static final String AUTHOR_ITEM = "/author/{id}";
-
     private static final String ADD_AUTHOR = "/add-author";
 
-    private final String AUTHOR_FORM = "author";
-
-    private final String NAME = "AC#";
-
-    private final String ADD_AUTHOR_GET = "addAuthor";
+    private static final String AUTHOR_FORM = "author";
+    private static final String NAME = "AC#";
+    private static final String ADD_AUTHOR_GET = "addAuthor";
 
     @Autowired
     private MethodMap methodMap;
@@ -54,26 +48,23 @@ public class AuthorController {
     @Autowired
     private SearchService searchService;
 
+    @Autowired
+    private MessageSource messageSource;
+
     @RequestMapping(value = AUTHORS_LIST,method = RequestMethod.GET)
     public String showAuthors(Model model) {
-        System.out.println("showAuthorList");
-
         List<Author> authors = searchService.findPopularAuthors(Const.START_PAGE);
-        model.addAttribute("authors",authors);
-        model.addAttribute("size",authors.size());
+        model.addAttribute(AUTHORS_ATTR,authors);
+        model.addAttribute(SIZE_ATTR,authors.size());
         model.addAttribute(Const.KEY_NUM_PAGE,Const.START_PAGE);
 
         return "authors/author_list";
-
     }
 
     @RequestMapping(value = AUTHOR_ITEM,method = RequestMethod.GET)
-    public String showAuthor(@PathVariable("id") Integer id, Model model, @AuthenticationPrincipal User user, HttpSession session) {
-        System.out.println("showAuthor");
-
-//        User user = (User) session.getAttribute(Const.USER_SESSION);
+    public String showAuthor(@PathVariable("id") Integer id, Model model,
+                             @AuthenticationPrincipal User user) {
         Author author;
-
         try {
             author = searchService.findAuthor(id,user.getId());
             if(author == null) {
@@ -83,8 +74,8 @@ public class AuthorController {
             throw new NotFoundException(Const.KEY_AUTHOR_TYPE);
         }
 
-        model.addAttribute("author",author);
-        model.addAttribute("user",user);
+        model.addAttribute(KEY_AUTHOR_TYPE,author);
+        model.addAttribute(KEY_USER_TYPE,user);
 
         return "authors/author_content";
 
@@ -93,14 +84,12 @@ public class AuthorController {
     @RequestMapping(value = ADD_AUTHOR,method = RequestMethod.GET)
     @PreAuthorize("hasRole('ADMIN')")
     public String addAuthor(Model model) {
-        System.out.println("addAuthor");
 
         List<Country> countries = searchService.findAllCountries();
-        model.addAttribute("countries",countries);
+        model.addAttribute(COUNTRIES_ATTR,countries);
 
         if(!model.containsAttribute(AUTHOR_FORM)) {
             AuthorForm author = new AuthorForm();
-
             model.addAttribute(AUTHOR_FORM, author);
         }
 
@@ -116,10 +105,8 @@ public class AuthorController {
         if (bindingResult.hasErrors()) {
             attr.addFlashAttribute(AUTHOR_FORM, author);
             attr.addFlashAttribute(BINDING_RESULT + AUTHOR_FORM,bindingResult);
-            addMainEntityService.printErrors(bindingResult);
             return methodMap.redirectReq(NAME + ADD_AUTHOR_GET);
         } else {
-
             System.out.println("userForm:\n");
             System.out.println(author.getBirthday());
             System.out.println(author.getDescription());
@@ -129,6 +116,8 @@ public class AuthorController {
             System.out.println("authPhoto = " + author.getPhoto().getOriginalFilename());
 
             addMainEntityService.insertAuthor(author,req);
+            attr.addFlashAttribute(UPDATE_MESSAGE,messageSource.getMessage(
+                    "message.add_author",null, LocaleContextHolder.getLocale()));
         }
         return "redirect:/profile";
 

@@ -12,14 +12,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import services.SearchService;
 import utils.Const;
-import exceptions.DbException;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
+
+import static utils.Const.KEY_BOOK_TYPE;
+import static utils.Const.KEY_USER_TYPE;
 
 @Controller
 @PreAuthorize("isAuthenticated()")
 public class BookController {
+
+    private static final String BOOKS_LIST = "/books";
+    private static final String BOOK_ITEM = "/book/{id}";
+
+    private static final String NAME = "BC#";
 
     @Autowired
     private SearchService searchService;
@@ -27,7 +33,7 @@ public class BookController {
     @Autowired
     private Logger logger;
 
-    @RequestMapping(value = "/books",method = RequestMethod.GET)
+    @RequestMapping(value = BOOKS_LIST,method = RequestMethod.GET)
     public String showBooks(Model model) {
         System.out.println("showBookListGET");
 
@@ -45,26 +51,22 @@ public class BookController {
 
     }
 
-    @RequestMapping(value = "/book/{id}",method = RequestMethod.GET)
-    public String showBook(@PathVariable("id") Integer id,Model model, HttpSession session,@AuthenticationPrincipal User user) {
-        System.out.println("books");
-
-//        User user = (User) session.getAttribute("user");
+    @RequestMapping(value = BOOK_ITEM ,method = RequestMethod.GET)
+    public String showBook(@PathVariable("id") Integer id,Model model,@AuthenticationPrincipal User user) {
         Book book;
-
         try {
             book = searchService.findBook(id, user.getId());
             if(book == null) {
                 throw new Exception();
             }
         } catch (Exception ex){
-            throw new NotFoundException(Const.KEY_BOOK_TYPE);
+            throw new NotFoundException(KEY_BOOK_TYPE);
         }
 
         System.out.println("authors book = " + book.getAuthors().get(0).getName());
 
-        model.addAttribute("book",book);
-        model.addAttribute("user",user);
+        model.addAttribute(KEY_BOOK_TYPE,book);
+        model.addAttribute(KEY_USER_TYPE,user);
 
         return "books/book_content";
 

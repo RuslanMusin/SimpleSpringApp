@@ -11,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import utils.RepoSpecification;
-import exceptions.DbException;
 
 import java.util.List;
 

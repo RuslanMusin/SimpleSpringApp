@@ -62,7 +62,7 @@
 
             <input type="hidden" th:field="*{authorsId}">
             <input type="hidden" th:field="*{authorsNames}">
-            <p th:text="'Актеры :' + ${bookForm.authorsNames}"></p>
+            <p th:text="'Актеры :' + (${bookForm.authorsNames == null} ? '' :${bookForm.authorsNames})"></p>
             <div th:if="${#fields.hasErrors('authorsId')}">
                 <p th:each="err : ${#fields.errors('authorsId')}"
                    th:text="${err}" th:class="error">Username error
@@ -71,7 +71,7 @@
 
             <input type="hidden" th:field="*{countriesId}">
             <input type="hidden" th:field="*{countriesNames}">
-            <p th:text="'Страны :' +  ${bookForm.countriesNames}"></p>
+            <p th:text="'Страны :' +  (${bookForm.countriesNames == null} ? '' :${bookForm.countriesNames})"></p>
             <div th:if="${#fields.hasErrors('authorsId')}">
                 <p th:each="err : ${#fields.errors('authorsId')}"
                    th:text="${err}" th:class="error">Username error
@@ -80,7 +80,7 @@
 
             <input type="hidden" th:field="*{genresId}">
             <input type="hidden" th:field="*{genresNames}">
-            <p th:text="'Жанры :' + ${bookForm.genresNames}"></p>
+            <p th:text="'Жанры :' + (${bookForm.genresNames == null} ? '' :${bookForm.genresNames})"></p>
             <div th:if="${#fields.hasErrors('authorsId')}">
                 <p th:each="err : ${#fields.errors('authorsId')}"
                    th:text="${err}" th:class="error">Username error

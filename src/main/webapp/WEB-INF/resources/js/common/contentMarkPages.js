@@ -91,7 +91,7 @@ function addReview() {
 
     var token = $("meta[name='_csrf']").attr("content");
 
-    alert(title + ' ' + objId + ' ' + reviewType);
+    // alert(title + ' ' + objId + ' ' + reviewType);
 
     var url = "/addReview";
 

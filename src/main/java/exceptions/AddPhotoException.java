@@ -1,7 +1,10 @@
 package exceptions;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-public class AddPhotoException extends Exception {
+@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+public class AddPhotoException extends RuntimeException{
 
     private String type;
 

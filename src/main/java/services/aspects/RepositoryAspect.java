@@ -3,32 +3,21 @@ package services.aspects;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
 @Aspect
-@Component
 public class RepositoryAspect {
-
+    //Написано для дз, можешь настроить сам, в проект в общем не входит
     private Logger logger = Logger.getLogger(getClass().getName());
 
-    @Pointcut("within(@org.springframework.stereotype.Repository *)")
-    public void repositoryClassMethods() {};
+    @Pointcut("within(@org.springframework.stereotype.Service *)")
+    public void serviceClassMethods(){}
 
-   /* @Pointcut("execution(* services.UserService*(..))")
-    public void meth() {};
-
-    @Pointcut("@target(org.springframework.stereotype.Repository)")
-    public void some() {};
-
-    @After("some()")
-    public Object method(){return new Object();}
-
-    @After("some()")
-    public void method2(){}*/
-
-    @Around("repositoryClassMethods()")
+    @Around("serviceClassMethods()")
     public Object measureMethodExecutionTime(ProceedingJoinPoint pjp) throws Throwable {
         String methodName = pjp.getSignature().getName();
         Object retval = null;

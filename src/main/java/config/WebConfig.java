@@ -41,13 +41,10 @@ import utils.converters.StringDateConverter;
 import java.util.Locale;
 
 @Configuration
-/*@ComponentScan(value = {"controllers","services","database","utils"},excludeFilters={
-        @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE, value= UserService.class)})*/
 @ComponentScan(value = {"controllers"})
 @EnableWebMvc
 @EnableAspectJAutoProxy
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-//@Import({SecurityConfig.class })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
@@ -70,7 +67,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
         templateResolver.setCharacterEncoding("UTF-8");
-
         return templateResolver;
     }
 
@@ -106,8 +102,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 .addResourceHandler("/**")
                 .addResourceLocations("/WEB-INF/resources/");
     }
-
-
 
     @Bean
     public LocaleResolver localeResolver() {

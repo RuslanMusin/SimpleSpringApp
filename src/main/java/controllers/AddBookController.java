@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import services.AddMainEntityService;
 import services.SearchService;
-import exceptions.DbException;
-import utils.Const;
 import utils.MethodMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,25 +25,21 @@ import javax.validation.Valid;
 import java.util.List;
 
 import static utils.Const.BINDING_RESULT;
+import static utils.Const.COUNTRIES_ATTR;
+import static utils.Const.UPDATE_MESSAGE;
 
 @Controller
 @PreAuthorize("hasRole('ADMIN')")
 public class AddBookController {
 
     private static final String ADD_BOOK = "/add-book";
-
-    private static final String BIND_AUTHORS = "bind-authors";
-
-    private static final String BIND_COUNTRIES = "bind-countries";
-
-    private static final String BIND_GENRES = "bind-genres";
-
-    private static final String SAVE_BOOK_DATA = "saveBookData";
+    private static final String BIND_AUTHORS = "/bind-authors";
+    private static final String BIND_COUNTRIES = "/bind-countries";
+    private static final String BIND_GENRES = "/bind-genres";
+    private static final String SAVE_BOOK_DATA = "/saveBookData";
 
     private final String BOOK_FORM = "bookForm";
-
     private final String NAME = "ABC#";
-
     private final String ADD_BOOK_GET = "addBook";
 
     @Autowired
@@ -60,12 +54,13 @@ public class AddBookController {
     @Autowired
     private MethodMap methodMap;
 
+    @Autowired
+    private MessageSource messageSource;
+
     @RequestMapping(value = ADD_BOOK,method = RequestMethod.GET)
     public String addBook(Model model) {
-        System.out.println("addBook");
-
         if(!model.containsAttribute(BOOK_FORM)) {
-            Object bookObject = session.getAttribute("bookForm");
+            Object bookObject = session.getAttribute(BOOK_FORM);
             BookForm bookForm;
             if (bookObject != null) {
                 bookForm = (BookForm) bookObject;
@@ -73,7 +68,6 @@ public class AddBookController {
                 bookForm = new BookForm();
                 session.setAttribute(BOOK_FORM, bookForm);
             }
-
             model.addAttribute(BOOK_FORM, bookForm);
         }
 
@@ -84,25 +78,17 @@ public class AddBookController {
     @RequestMapping(value = ADD_BOOK,method = RequestMethod.POST)
     public String addBookPost(@ModelAttribute(BOOK_FORM) @Valid BookForm bookForm,
                               BindingResult bindingResult, HttpServletRequest req,
-                              RedirectAttributes attr) throws AddPhotoException, AddRelatedEntitiesException {
+                              RedirectAttributes attr)
+                                                throws AddPhotoException, AddRelatedEntitiesException {
         if (bindingResult.hasErrors()) {
             attr.addFlashAttribute(BOOK_FORM, bookForm);
             attr.addFlashAttribute(BINDING_RESULT + BOOK_FORM,bindingResult);
-            addMainEntityService.printErrors(bindingResult);
-            return "redirect:" + ADD_BOOK;
+            return methodMap.redirectReq(NAME + ADD_BOOK_GET);
         } else {
-
-            System.out.println("userForm:\n");
-            System.out.println(bookForm.getYear());
-            System.out.println(bookForm.getDescription());
-            System.out.println(bookForm.getCountriesId());
-            System.out.println(bookForm.getName());
-            System.out.println(bookForm.getDescription());
-            System.out.println("authPhoto = " + bookForm.getPhoto().getOriginalFilename());
-
             addMainEntityService.insertBook(bookForm,req);
-
             session.removeAttribute(BOOK_FORM);
+            attr.addFlashAttribute(UPDATE_MESSAGE,messageSource.getMessage(
+                    "message.add_book",null, LocaleContextHolder.getLocale()));
         }
         return methodMap.redirectReq(
                 SecurityController.NAME + SecurityController.PROFILE_GET);
@@ -111,79 +97,65 @@ public class AddBookController {
 
     @RequestMapping(value = BIND_AUTHORS,method = RequestMethod.GET)
     public String bindAuthors(Model model) {
-        System.out.println("bindAuthors");
-
         List<Country> countries = searchService.findAllCountries();
-        model.addAttribute("countries",countries);
+        model.addAttribute(COUNTRIES_ATTR,countries);
 
         return "adminSearch/search-authors";
 
     }
 
     @RequestMapping(value = BIND_GENRES,method = RequestMethod.GET)
-    public String bindGenres(Model model) {
-        System.out.println("bindGenres");
-
+    public String bindGenres() {
         return "adminSearch/search-genres";
 
     }
 
     @RequestMapping(value = BIND_COUNTRIES,method = RequestMethod.GET)
-    public String bindCountries(Model model) {
-        System.out.println("bindCountries");
-
+    public String bindCountries() {
         return "adminSearch/search-countries";
 
     }
 
     @RequestMapping(value = BIND_AUTHORS,method = RequestMethod.POST)
-    public String bindAuthorsPost(Model model, HttpSession session,
-                                  String authorsId, String authorsNames) {
-        System.out.println("bindAuthors");
+    public String bindAuthorsPost(Model model,String authorsId, String authorsNames) {
 
-        BookForm bookForm = (BookForm) session.getAttribute("bookForm");
+        BookForm bookForm = (BookForm) session.getAttribute(BOOK_FORM);
 
         bookForm.setAuthorsId(authorsId);
         bookForm.setAuthorsNames(authorsNames);
 
-        model.addAttribute("bookForm",bookForm);
-        session.setAttribute("bookForm",bookForm);
+        model.addAttribute(BOOK_FORM,bookForm);
+        session.setAttribute(BOOK_FORM,bookForm);
 
         return methodMap.redirectReq(NAME + ADD_BOOK_GET);
 
     }
 
     @RequestMapping(value = BIND_GENRES,method = RequestMethod.POST)
-    public String bindGenresPost(Model model, HttpSession session,
-                                 String genresId, String genresNames) {
-        System.out.println("bindGenres");
+    public String bindGenresPost(Model model, String genresId, String genresNames) {
 
-        BookForm bookForm = (BookForm) session.getAttribute("bookForm");
+        BookForm bookForm = (BookForm) session.getAttribute(BOOK_FORM);
 
         bookForm.setGenresId(genresId);
         bookForm.setGenresNames(genresNames);
 
-        model.addAttribute("bookForm",bookForm);
-
-        session.setAttribute("bookForm",bookForm);
+        model.addAttribute(BOOK_FORM,bookForm);
+        session.setAttribute(BOOK_FORM,bookForm);
 
         return methodMap.redirectReq(NAME + ADD_BOOK_GET);
 
     }
 
     @RequestMapping(value = BIND_COUNTRIES,method = RequestMethod.POST)
-    public String bindCountriesPost(Model model, HttpSession session,
-                                    String countriesId, String countriesNames) {
-        System.out.println("bindCountries");
+    public String bindCountriesPost(Model model, String countriesId, String countriesNames) {
 
-        BookForm bookForm = (BookForm) session.getAttribute("bookForm");
+        BookForm bookForm = (BookForm) session.getAttribute(BOOK_FORM);
 
         bookForm.setCountriesId(countriesId);
         bookForm.setCountriesNames(countriesNames);
 
-        model.addAttribute("bookForm",bookForm);
-
-        session.setAttribute("bookForm",bookForm);
+        model.addAttribute(BOOK_FORM,bookForm);
+        session.setAttribute(BOOK_FORM,bookForm);
 
         return methodMap.redirectReq(NAME + ADD_BOOK_GET);
 
@@ -191,15 +163,13 @@ public class AddBookController {
 
     @RequestMapping(value = SAVE_BOOK_DATA,method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity saveBookData(HttpSession session,
-                                       @RequestParam String name,
+    public ResponseEntity saveBookData(@RequestParam String name,
                                        @RequestParam String description,
                                        @RequestParam String authorsId,
                                        @RequestParam String genresId,
                                        @RequestParam String countriesId) {
-        System.out.println("saveBookData");
 
-        BookForm bookForm = (BookForm) session.getAttribute("bookForm");
+        BookForm bookForm = (BookForm) session.getAttribute(BOOK_FORM);
 
         bookForm.setName(name);
         bookForm.setDescription(description);
@@ -213,8 +183,7 @@ public class AddBookController {
         System.out.println("genresId = " + genresId);
         System.out.println("countriesId = " + countriesId);
 
-
-        session.setAttribute("bookForm",bookForm);
+        session.setAttribute(BOOK_FORM,bookForm);
 
         return ResponseEntity.status(HttpStatus.OK).body(null);
 

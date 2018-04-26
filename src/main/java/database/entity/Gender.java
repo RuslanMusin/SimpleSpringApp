@@ -30,16 +30,8 @@ public enum Gender {
 
     private String value;
 
-    public MessageSource getMessageSource() {
-        return messageSource;
-    }
-
     public void setMessageSource(MessageSource messageSource) {
         this.messageSource = messageSource;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     public String getValue(){

@@ -19,11 +19,9 @@ public class User implements Identified,CredentialsContainer, UserDetails {
     private Integer id;
 
     @Column(name = "email",unique = true)
-    @NotBlank(message = "Email can't be null")
     private String username;
 
     @Column
-    @NotBlank(message = "Password can't be empty")
     private String password;
 
     @Column(name = "username")

@@ -5,6 +5,7 @@ import database.hibernate_repository.BookRepository;
 import exceptions.SetMarkException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import utils.Const;
 
 @Service
@@ -16,6 +17,7 @@ public class SetVoteService {
     @Autowired
     private AuthorRepository authorRepository;
 
+    @Transactional
     public Integer addMark(String markStr, String markIdStr, String userIdStr, String type) throws Exception {
 
         Integer commonMark = null;
@@ -43,6 +45,7 @@ public class SetVoteService {
 
         return commonMark;
     }
+
 
     private Integer addAndGetAuthorMark(Integer mark, Integer markId, Integer userId) {
 

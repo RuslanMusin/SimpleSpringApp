@@ -16,13 +16,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.Principal;
 
-@WebFilter(urlPatterns = {"/","/login"}, description = "Session Checker Filter")
-public class SessionFilter implements Filter {
+@WebFilter(urlPatterns = {"/","/login"})
+public class RememberMeFilter implements Filter {
     private FilterConfig config = null;
 
     public void init(FilterConfig config) throws ServletException {
         this.config = config;
-        config.getServletContext().log("Initializing SessionFilter");
+        config.getServletContext().log("Initializing RememberMeFilter");
     }
 
     public void doFilter(ServletRequest request, ServletResponse response,
@@ -31,33 +31,16 @@ public class SessionFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
 
-
-        HttpSession session = req.getSession();
         Principal principal = req.getUserPrincipal();
 
-      /*  if (session.getAttribute("user") == null && principal instanceof RememberMeAuthenticationToken) {
-            RememberMeAuthenticationToken userToken = (RememberMeAuthenticationToken) principal;
-            System.out.println("princ = " + userToken.getName());
-            User user = (User) userToken.getPrincipal();
-            session.setAttribute("user", user);
-        }*/
-//        if(((HttpServletRequest) request).getRequestURI().equals(SecurityController.LOGIN)) {
-      System.out.println("req = " + req.getRequestURI() + " path = " + req.getContextPath());
-
         if (principal != null && principal instanceof RememberMeAuthenticationToken) {
-        /*RememberMeAuthenticationToken userToken = (RememberMeAuthenticationToken) principal;
-        System.out.println("princ = " + userToken.getName());
-        User user = (User) userToken.getPrincipal();
-        session.setAttribute("user", user);*/
-            ((HttpServletResponse) response).sendRedirect(req.getContextPath() + "/403");
-        }
-        else {
-
+            resp.sendRedirect(req.getContextPath() + "/403");
+        } else {
             chain.doFilter(request, response);
         }
     }
 
     public void destroy() {
-        config.getServletContext().log("Destroying SessionFilter");
+        config.getServletContext().log("Destroying RememberMeFilter");
     }
 }

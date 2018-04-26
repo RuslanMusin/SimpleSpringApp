@@ -1,16 +1,14 @@
 package config;
 
+import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.CacheManager;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.ehcache.EhCacheFactoryBean;
-import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDecisionVoter;
-import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.annotation.SecuredAnnotationSecurityMetadataSource;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
@@ -19,8 +17,6 @@ import org.springframework.security.access.intercept.AfterInvocationProviderMana
 import org.springframework.security.access.intercept.aopalliance.MethodSecurityInterceptor;
 import org.springframework.security.access.intercept.aspectj.AspectJMethodSecurityInterceptor;
 import org.springframework.security.access.method.MethodSecurityMetadataSource;
-import org.springframework.security.access.vote.AbstractAccessDecisionManager;
-import org.springframework.security.access.vote.AuthenticatedVoter;
 import org.springframework.security.access.vote.RoleVoter;
 import org.springframework.security.access.vote.UnanimousBased;
 import org.springframework.security.acls.AclEntryVoter;
@@ -32,15 +28,12 @@ import org.springframework.security.acls.domain.*;
 import org.springframework.security.acls.jdbc.BasicLookupStrategy;
 import org.springframework.security.acls.jdbc.JdbcMutableAclService;
 import org.springframework.security.acls.jdbc.LookupStrategy;
-import org.springframework.security.acls.model.AclService;
 import org.springframework.security.acls.model.Permission;
 import org.springframework.security.acls.model.PermissionGrantingStrategy;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.web.access.expression.WebExpressionVoter;
-import org.springframework.security.web.access.intercept.DefaultFilterInvocationSecurityMetadataSource;
+import utils.CustomerService;
 
 import javax.sql.DataSource;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -48,6 +41,7 @@ import static org.springframework.security.acls.domain.BasePermission.READ;
 import static org.springframework.security.acls.domain.BasePermission.WRITE;
 
 @Configuration
+@Import(AclMethodSecurityConfig.class)
 public class ACLConfig {
 
     @Autowired
@@ -152,6 +146,21 @@ public class ACLConfig {
                 "ACL_OBJECT_READ",
                 new Permission[]{READ,WRITE}
                 );
+    }
+
+
+    @Qualifier("customerService")
+    public ProxyFactoryBean customService(){
+        ProxyFactoryBean bean = new ProxyFactoryBean();
+        bean.addInterface(CustomerService.class);
+        bean.setInterceptorNames("customerServiceTarget",
+                "objectManagerSecurity");
+
+        return bean;
+    }
+
+    public CustomerServiceImpl customerServiceTarget(){
+        return new CustomerServiceImpl();
     }
 
 

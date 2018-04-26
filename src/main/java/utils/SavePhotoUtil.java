@@ -31,7 +31,6 @@ public class SavePhotoUtil {
 
             String path = req.getServletContext().getRealPath(MAIN_PART_PATH) + defFolder;
 
-
             File dir = new File(path);
             if(!dir.exists()){
                 dir.mkdirs();
@@ -39,8 +38,6 @@ public class SavePhotoUtil {
 
             String fileType = photoFile.getContentType().replace("image/",".");
             File file = File.createTempFile(photoFile.getName() + "-", fileType,dir);
-
-            System.out.println("fileType = " + fileType);
 
             InputStream input = photoFile.getInputStream();
             Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);

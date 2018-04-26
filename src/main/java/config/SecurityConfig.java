@@ -34,7 +34,6 @@ import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
 @EnableWebSecurity
-/*@ComponentScan(value = "services")*/
 @EnableAspectJAutoProxy
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -68,7 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .formLogin()
                         .loginPage("/login")
                         .failureUrl("/login?error=true")
-//                        .successForwardUrl("/login")
                         .defaultSuccessUrl("/profile",true)
                         .usernameParameter("username").passwordParameter("password")
                     .and()
@@ -80,7 +78,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login?logout=true")
                         .deleteCookies("JSESSIONID")
-//                        .deleteCookies("remember-me")
                     .and()
                     .exceptionHandling().accessDeniedPage("/403")
                     .and()
@@ -110,16 +107,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setForceEncoding(true);
         return filter;
     }
-
-    @Bean
-    public SessionRegistry sessionRegistry(){
-        return new SessionRegistryImpl();
-    }
-
-    /*@Bean
-    public User getLoggedInUser(){
-        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    }*/
 
 }
 

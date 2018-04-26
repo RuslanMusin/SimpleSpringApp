@@ -6,34 +6,91 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" line="62" mnemonic="4" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" line="64" mnemonic="4" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12e5ca0a-a82d-4b64-bd11-0b7d0258eb1a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_2_4_RELEASE.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_8_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_6_11.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_6_11.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/controllers/ajaxSearch/SessionFilter.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SessionFilter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_2_9_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controllers/ajaxSearch/AclSecurityUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controllers/ajaxSearch/AclSecurityUtilImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controllers/ajaxSearch/CustomerService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controllers/ajaxSearch/SecurityServiceImpl.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/exceptions/DbException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/utils/DbWrapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/utils/validators/CheckValuesValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/utils/validators/FieldMatch.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/utils/validators/FieldMatchValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/utils/validators/InDateRange.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/utils/validators/InDateRangeValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/somelogs.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/utils/DbWrapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/utils/validators/FieldMatch$List.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/utils/validators/FieldMatch.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/utils/validators/FieldMatchValidator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/utils/DbWrapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/utils/validators/FieldMatch$List.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/utils/validators/FieldMatch.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/utils/validators/FieldMatchValidator.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_6_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_8_12.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_6_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_12.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/SessionFilter.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/RememberMeFilter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/utils/validators/UserFormValidator.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/ajaxSearch/UserFormValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/config/WebConfig.class" afterPath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/config/WebConfig.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/config/WebInitializer.class" afterPath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/config/WebInitializer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/database/entity/User.class" afterPath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/database/entity/User.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/utils/Const.class" afterPath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/utils/Const.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config/WebConfig.class" afterPath="$PROJECT_DIR$/target/classes/config/WebConfig.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config/WebInitializer.class" afterPath="$PROJECT_DIR$/target/classes/config/WebInitializer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/database/entity/User.class" afterPath="$PROJECT_DIR$/target/classes/database/entity/User.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/utils/Const.class" afterPath="$PROJECT_DIR$/target/classes/utils/Const.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/SpringTwoWebSite_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/SpringTwoWebSite_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpringTwoWebSite.iml" afterPath="$PROJECT_DIR$/SpringTwoWebSite.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/config/RootConfig.java" afterPath="$PROJECT_DIR$/src/main/java/config/RootConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/config/SecurityConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/config/WebConfig.java" afterPath="$PROJECT_DIR$/src/main/java/config/WebConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/config/WebInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/config/WebInitializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/AddBookController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/AddBookController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/AuthorController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/AuthorController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/BookController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/BookController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/MarkReviewController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/MarkReviewController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/SearchController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/SearchController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/SecurityController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/SecurityController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/ajaxSearch/ACLConfig.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/ajaxSearch/ACLConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/database/entity/Gender.java" afterPath="$PROJECT_DIR$/src/main/java/database/entity/Gender.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/database/entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/database/entity/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/database/entity/forms/AuthorForm.java" afterPath="$PROJECT_DIR$/src/main/java/database/entity/forms/AuthorForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/database/hibernate_repository/GenreRepository.java" afterPath="$PROJECT_DIR$/src/main/java/database/hibernate_repository/GenreRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/exceptions/AddPhotoException.java" afterPath="$PROJECT_DIR$/src/main/java/exceptions/AddPhotoException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/exceptions/AddRelatedEntitiesException.java" afterPath="$PROJECT_DIR$/src/main/java/exceptions/AddRelatedEntitiesException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/AddMainEntityService.java" afterPath="$PROJECT_DIR$/src/main/java/services/AddMainEntityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/AddReviewService.java" afterPath="$PROJECT_DIR$/src/main/java/services/AddReviewService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/IUserService.java" afterPath="$PROJECT_DIR$/src/main/java/services/IUserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/SearchService.java" afterPath="$PROJECT_DIR$/src/main/java/services/SearchService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/SetVoteService.java" afterPath="$PROJECT_DIR$/src/main/java/services/SetVoteService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/services/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/aspects/RepositoryAspect.java" afterPath="$PROJECT_DIR$/src/main/java/services/aspects/RepositoryAspect.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/Const.java" afterPath="$PROJECT_DIR$/src/main/java/utils/Const.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/MethodMap.java" afterPath="$PROJECT_DIR$/src/main/java/utils/MethodMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/somelogs.log" afterPath="$PROJECT_DIR$/src/main/resources/somelogs.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/RepoSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/utils/RepoSpecification.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/SavePhotoUtil.java" afterPath="$PROJECT_DIR$/src/main/java/utils/SavePhotoUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_ru.properties" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_ru.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/js/common/contentMarkPages.js" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/js/common/contentMarkPages.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addInstance/addBook.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addInstance/addBook.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/authors/author_content.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/authors/author_content.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/book_content.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/book_content.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/menu_main.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/menu_main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/personal_page.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/personal_page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/i18n/messages_en.properties" afterPath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/i18n/messages_en.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/i18n/messages_ru.properties" afterPath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/classes/i18n/messages_ru.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/views/index.html" afterPath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/views/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/views/main/menu_main.html" afterPath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/views/main/menu_main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/views/user/personal_page.html" afterPath="$PROJECT_DIR$/target/SpringTwoWebSite/WEB-INF/views/user/personal_page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/i18n/messages_en.properties" afterPath="$PROJECT_DIR$/target/classes/i18n/messages_en.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/i18n/messages_ru.properties" afterPath="$PROJECT_DIR$/target/classes/i18n/messages_ru.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -83,44 +140,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="RepositoryAspect.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/services/aspects/RepositoryAspect.java">
+      <file leaf-file-name="SecurityController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/SecurityController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/hibernate_repository/UserRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            <state relative-caret-position="1430">
+              <caret line="90" column="71" lean-forward="false" selection-start-line="90" selection-start-column="71" selection-end-line="90" selection-end-column="71" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RootConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/config/RootConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
-              <folding />
+      <file leaf-file-name="users" pinned="false" current-in-tab="false">
+        <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.users">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -128,18 +162,8 @@
       <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/config/SecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SecurityWebApplicationInitializer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/config/SecurityWebApplicationInitializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+            <state relative-caret-position="1738">
+              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -148,42 +172,71 @@
       <file leaf-file-name="WebConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/config/WebConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+            <state relative-caret-position="2222">
+              <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/hibernate_repository/BookRepository.java">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+            <state relative-caret-position="1166">
+              <caret line="59" column="27" lean-forward="false" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Const.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/Const.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="990">
+              <caret line="46" column="65" lean-forward="false" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/Book.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1144">
+              <caret line="59" column="36" lean-forward="false" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RepoSpecification.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/RepoSpecification.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RepositoryAspect.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/services/aspects/RepositoryAspect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
               <folding>
-                <marker date="1524166316673" expanded="true" signature="817:973" ph="select * fro... books" />
-                <marker date="1524166316673" expanded="true" signature="1087:1155" ph="SELECT * FRO... getselectbookbyname" />
-                <marker date="1524166316673" expanded="true" signature="1300:1426" ph="SELECT mark books_users_votes" />
-                <marker date="1524166316673" expanded="true" signature="1607:1711" ph="INSERT INTO spring_database.public.books_users_votes... " />
-                <marker date="1524166316673" expanded="true" signature="1883:1976" ph="SELECT mark books" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthorRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/hibernate_repository/AuthorRepository.java">
+      <file leaf-file-name="SearchService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/services/SearchService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1524474164636" expanded="true" signature="960:1120" ph="select * fro... authors" />
-                <marker date="1524474164636" expanded="true" signature="1236:1340" ph="SELECT * FRO... getselectauthorbyname" />
-                <marker date="1524474164636" expanded="true" signature="1574:1706" ph="SELECT mark authors_users_votes" />
-                <marker date="1524474164636" expanded="true" signature="1889:1999" ph="INSERT INTO spring_database.public.authors_users_votes... " />
-                <marker date="1524474164636" expanded="true" signature="2175:2274" ph="SELECT mark authors" />
-              </folding>
+            <state relative-caret-position="440">
+              <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -212,7 +265,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <push-targets>
-      <push-target-info target-remote="origin" target-branch="task/most_content" repo="$PROJECT_DIR$" source="master" />
+      <push-target-info target-remote="origin" target-branch="task/remember-me" repo="$PROJECT_DIR$" source="master" />
     </push-targets>
   </component>
   <component name="GradleLocalSettings">
@@ -223,56 +276,56 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/form_btn.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/authors/author_list.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminSearch/search-genres.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminSearch/search-countries.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminSearch/search-authors.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/personal_page.html" />
-        <option value="/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/database/spring_database/schema/public/routine/getselectcountrybyname.(text).sql" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handler/AddMarkReviewHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handler/FindEntityException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/config/SecurityWebApplicationInitializer.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/db_properties/postgres.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/config/WebInitializer.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/somelogs.log" />
-        <option value="$PROJECT_DIR$/src/main/java/services/AddMainEntityService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/AddBookController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/hibernate_repository/AuthorReviewRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/hibernate_repository/BookReviewRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handler/aspects/RepositoryAspect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/hibernate_repository/AuthorRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/book_list.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/movie_list.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/change_personal.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user_dop_data.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addInstance/addBook.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addInstance/addAuthor.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/registration.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/xml_parts/user/add_review.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/menu.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/start_page.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/registration.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/add_people.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/add_movie.css" />
-        <option value="$PROJECT_DIR$/src/main/java/config/WebConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/services/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/services/IUserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/MethodMap.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/config/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/SecurityController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/filters/SessionFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/services/SearchService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/menu_main.html" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/MarkReviewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/BookController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/book_content.html" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/AuthorController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/config/RootConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/RepoSpecification.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/hibernate_repository/GenreRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/services/SomeIAspServ.java" />
+        <option value="$PROJECT_DIR$/src/main/java/config/AspectConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/MethodMap.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/AclSecurityUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/AclSecurityUtilImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/SecurityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/UserService2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/CustomerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/config/ACLConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/config/RootConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/config/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/config/WebConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/filters/RememberMeFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/BookController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/MarkReviewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/SearchController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/entity/review/BookReview.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/entity/Gender.java" />
+        <option value="$PROJECT_DIR$/src/main/java/services/AddMainEntityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/services/AddReviewService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/services/SetVoteService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/SavePhotoUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/exceptions/AddRelatedEntitiesException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/exceptions/AddPhotoException.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/js/common/contentMarkPages.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/somelogs.log" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/book_content.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/authors/author_content.html" />
+        <option value="$PROJECT_DIR$/src/main/java/services/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/services/IUserService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/Const.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/personal_page.html" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/AddBookController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/AuthorController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/entity/User.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addInstance/addBook.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/i18n/messages_ru.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/SecurityController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/config/WebInitializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/services/aspects/RepositoryAspect.java" />
       </list>
     </option>
@@ -321,7 +374,8 @@
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="960" />
+    <option name="x" value="856" />
+    <option name="y" value="-7" />
     <option name="width" value="960" />
     <option name="height" value="1032" />
   </component>
@@ -343,8 +397,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -438,7 +492,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="hibernate_repository" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="review" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringTwoWebSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringTwoWebSite" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SpringTwoWebSite" type="b2602c69:ProjectViewProjectNode" />
@@ -464,6 +527,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringTwoWebSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringTwoWebSite" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="validators" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SpringTwoWebSite" type="b2602c69:ProjectViewProjectNode" />
@@ -520,16 +592,6 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringTwoWebSite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SpringTwoWebSite" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SpringTwoWebSite" type="b2602c69:ProjectViewProjectNode" />
@@ -657,8 +719,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -666,28 +728,28 @@
     <property name="nodejs_interpreter_path" value="A:/Programs/NodeJS/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.51679105" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NotesSpring" />
+    <property name="last_opened_file_path" value="A:/вуз/информатика/springstarter" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\java\controllers\ajaxSearch" />
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\java\config" />
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\java\controllers\filters" />
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\resources\images\lang" />
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\java\database\jdbc_template" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\views\xml_parts" />
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\resources\js\common" />
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\resources\css" />
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\views" />
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\resources\js\search" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="utils" />
@@ -695,12 +757,12 @@
       <recent name="database.dao.postgresDao" />
       <recent name="database.dao.IDao" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\java\controllers\filters" />
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\java\controllers\ajaxSearch" />
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\resources\images\lang" />
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\java\database\jdbc_template" />
-      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\java\config" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\views\xml_parts" />
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\resources\js\common" />
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\resources\css" />
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\views" />
+      <recent name="A:\IDEA_Projects\SpringAll\SpringTwoWebSite\src\main\webapp\WEB-INF\resources\js\search" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -950,7 +1012,12 @@
       <workItem from="1524473384506" duration="3155000" />
       <workItem from="1524479806572" duration="5968000" />
       <workItem from="1524521528007" duration="12799000" />
-      <workItem from="1524582538866" duration="15147000" />
+      <workItem from="1524582538866" duration="15301000" />
+      <workItem from="1524602685888" duration="556000" />
+      <workItem from="1524603271719" duration="22264000" />
+      <workItem from="1524640093394" duration="6977000" />
+      <workItem from="1524731843196" duration="563000" />
+      <workItem from="1524732448282" duration="923000" />
     </task>
     <task id="LOCAL-00001" summary="adding entityManager">
       <created>1522867706631</created>
@@ -966,11 +1033,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524528497661</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Remember me and Page Request now correct">
+      <created>1524602421036</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1524602421036</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="613699000" />
+    <option name="totallyTimeSpent" value="645136000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -993,24 +1067,23 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26852846" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19656284" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.58539206" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33521444" sideWeight="0.31256714" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.49785176" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2878104" sideWeight="0.68850696" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2979684" sideWeight="0.4914071" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08986175" sideWeight="0.68850696" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06659142" sideWeight="0.4914071" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4503386" sideWeight="0.7325457" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.4935553" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24006444" sideWeight="0.51941746" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26852846" sideWeight="0.48058254" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28195488" sideWeight="0.48058254" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24006444" sideWeight="0.51941746" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1019,13 +1092,24 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspector" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
+      <window_info id="Usages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27088037" sideWeight="0.31256714" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22347629" sideWeight="0.45703545" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.4462943" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependencies Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UsagesViewTool">
+    <version id="1" />
+    <tabs />
+    <default_view_options>
+      <options category_option="false" module_option="true" model_option="true" root_option="true" path_option="false" count_option="true" info_option="true" view_searched_nodes_option="true" group_searched_nodes_option="true" autoscroll_option="false" />
+    </default_view_options>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1033,19 +1117,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding entityManager" />
     <MESSAGE value="added Crud,Service,Security,AOP,Logger,Content. Some troubles with remember-me." />
-    <option name="LAST_COMMIT_MESSAGE" value="added Crud,Service,Security,AOP,Logger,Content. Some troubles with remember-me." />
+    <MESSAGE value="Remember me and Page Request now correct" />
+    <MESSAGE value="Final changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/SavePhotoUtil.java</url>
-          <line>15</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1054,105 +1132,112 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/start_page.css">
+    <entry file="file://$PROJECT_DIR$/src/main/java/exceptions/AddRelatedEntitiesException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        <state relative-caret-position="110">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/review.css">
+    <entry file="file://$PROJECT_DIR$/src/main/java/exceptions/AddPhotoException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="220">
+          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/registration.css">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/js/common/contentMarkPages.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="-902">
+          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/add_people.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.persistent_logins">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/add_movie.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/somelogs.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="-15269">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/config/WebInitializer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/validators/CountryValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="-121">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/book_content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2904">
+          <caret line="132" column="60" lean-forward="false" selection-start-line="132" selection-start-column="60" selection-end-line="132" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/authors/author_content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1782">
+          <caret line="81" column="38" lean-forward="false" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/config/RootConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.movies_genres">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ctid" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.2.2.RELEASE/spring-security-config-4.2.2.RELEASE.jar!/org/springframework/security/config/annotation/web/configurers/FormLoginConfigurer.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/services/IUserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="17" column="97" lean-forward="false" selection-start-line="17" selection-start-column="97" selection-end-line="17" selection-end-column="97" />
+        <state relative-caret-position="242">
+          <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/book_list.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/services/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="50" column="49" lean-forward="false" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
-          <folding />
+        <state relative-caret-position="1298">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/registration.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/MethodMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="58" lean-forward="false" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
-          <folding>
-            <marker date="1524484511456" expanded="true" signature="575:586" ph="Email" />
-            <marker date="1524484511456" expanded="true" signature="1030:1048" ph="Username" />
-            <marker date="1524484511456" expanded="true" signature="1497:1511" ph="Password" />
-            <marker date="1524484511456" expanded="true" signature="1958:1980" ph="Repeat password" />
-          </folding>
+        <state relative-caret-position="176">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.places">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="48" column="36" lean-forward="false" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/SearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.users_roles">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.users">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AddBookController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="89" column="35" lean-forward="false" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1164,80 +1249,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handler/ExceptionHandlerController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/forms/RegistrationForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="378">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handler/FindEntityException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/forms/UserChangeForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="25" column="29" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+        <state relative-caret-position="88">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exceptions/NotFoundException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/UserAuthority.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="132">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/review/Review.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1524590282193" expanded="true" signature="423:430" ph="RU" />
-            <marker date="1524590282193" expanded="true" signature="531:538" ph="RU" />
-            <marker date="1524590282193" expanded="true" signature="552:559" ph="RU" />
-            <marker date="1524590282193" expanded="true" signature="608:615" ph="EN" />
-            <marker date="1524590282193" expanded="true" signature="629:636" ph="EN" />
-            <marker date="1524590282193" expanded="true" signature="1132:1143" ph="Email" />
-            <marker date="1524590282193" expanded="true" signature="1543:1557" ph="Password" />
-            <marker date="1524590282193" expanded="true" signature="2008:2021" ph="Sign in" />
-            <marker date="1524590282193" expanded="true" signature="2213:2226" ph="Sign up" />
-            <marker date="1524590282193" expanded="true" signature="2312:2323" ph="Incorrect username or password entered" />
-          </folding>
+        <state relative-caret-position="88">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/MethodMap.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/review/BookReview.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="132">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.place_types">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.persistent_logins">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/filters/SessionFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addInstance/addBook.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="50" column="45" lean-forward="true" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="308">
+          <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.movies">
+    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.genres">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -1251,247 +1307,217 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/services/SearchService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="72" column="38" lean-forward="false" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/SecurityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="199" column="75" lean-forward="false" selection-start-line="199" selection-start-column="41" selection-end-line="199" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/services/IUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/menu_main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="41" column="58" lean-forward="false" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
-          <folding>
-            <marker date="1524589982992" expanded="true" signature="378:388" ph="Books" />
-            <marker date="1524589982992" expanded="true" signature="600:612" ph="Authors" />
-            <marker date="1524589982992" expanded="true" signature="1476:1483" ph="RU" />
-            <marker date="1524589982992" expanded="true" signature="1669:1676" ph="RU" />
-            <marker date="1524589982992" expanded="true" signature="1690:1697" ph="RU" />
-            <marker date="1524589982992" expanded="true" signature="1776:1783" ph="EN" />
-            <marker date="1524589982992" expanded="true" signature="1797:1804" ph="EN" />
-            <marker date="1524589982992" expanded="true" signature="2021:2034" ph="My page" />
-            <marker date="1524589982992" expanded="true" signature="2192:2201" ph="Quit" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/services/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="103" column="23" lean-forward="false" selection-start-line="103" selection-start-column="23" selection-end-line="103" selection-end-column="23" />
-          <folding />
+    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.authors">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="110" column="26" lean-forward="false" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
+        <state relative-caret-position="497">
+          <caret line="81" column="80" lean-forward="true" selection-start-line="80" selection-start-column="11" selection-end-line="81" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/i18n/messages_ru.properties">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/config/SecurityWebApplicationInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/SearchController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="495">
+          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <marker date="1524643006680" expanded="true" signature="423:430" ph="RU" />
+            <marker date="1524643006680" expanded="true" signature="531:538" ph="RU" />
+            <marker date="1524643006680" expanded="true" signature="552:559" ph="RU" />
+            <marker date="1524643006680" expanded="true" signature="608:615" ph="EN" />
+            <marker date="1524643006680" expanded="true" signature="629:636" ph="EN" />
+            <marker date="1524643006680" expanded="true" signature="1132:1143" ph="Email" />
+            <marker date="1524643006680" expanded="true" signature="1543:1557" ph="Password" />
+            <marker date="1524643006680" expanded="true" signature="2008:2021" ph="Sign in" />
+            <marker date="1524643006680" expanded="true" signature="2213:2226" ph="Sign up" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/css/personal_page.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/personal_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="46" column="40" lean-forward="false" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/forms/AuthorForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MarkReviewController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/config/WebInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
+        <state relative-caret-position="264">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/book_content.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/Genre.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="180" column="41" lean-forward="false" selection-start-line="180" selection-start-column="41" selection-end-line="180" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AddBookController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/Gender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3714">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="110">
+          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/BookController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/Country.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="66" column="17" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="506">
+          <caret line="31" column="23" lean-forward="true" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/Author.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handler/AddMarkReviewHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handler/ExceptionHandlerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handler/FindEntityException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="86" column="40" lean-forward="true" selection-start-line="86" selection-start-column="40" selection-end-line="86" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AuthorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+        <state relative-caret-position="499">
+          <caret line="118" column="35" lean-forward="false" selection-start-line="118" selection-start-column="35" selection-end-line="118" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/SecurityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1430">
+          <caret line="90" column="71" lean-forward="false" selection-start-line="90" selection-start-column="71" selection-end-line="90" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/hibernate_repository/GenreRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding>
-            <marker date="1523732134954" expanded="true" signature="484:578" ph="SELECT * FRO... getselectgenrebyname" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/hibernate_repository/AuthorReviewRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/hibernate_repository/BookRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <marker date="1524166316673" expanded="true" signature="817:973" ph="select * fro... books" />
-            <marker date="1524166316673" expanded="true" signature="1087:1155" ph="SELECT * FRO... getselectbookbyname" />
-            <marker date="1524166316673" expanded="true" signature="1300:1426" ph="SELECT mark books_users_votes" />
-            <marker date="1524166316673" expanded="true" signature="1607:1711" ph="INSERT INTO spring_database.public.books_users_votes... " />
-            <marker date="1524166316673" expanded="true" signature="1883:1976" ph="SELECT mark books" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/hibernate_repository/CountryRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding>
-            <marker date="1523709474465" expanded="true" signature="458:556" ph="SELECT * FRO... getselectcountrybyname" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/services/SetVoteService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/hibernate_repository/AuthorRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1524474164636" expanded="true" signature="960:1120" ph="select * fro... authors" />
-            <marker date="1524474164636" expanded="true" signature="1236:1340" ph="SELECT * FRO... getselectauthorbyname" />
-            <marker date="1524474164636" expanded="true" signature="1574:1706" ph="SELECT mark authors_users_votes" />
-            <marker date="1524474164636" expanded="true" signature="1889:1999" ph="INSERT INTO spring_database.public.authors_users_votes... " />
-            <marker date="1524474164636" expanded="true" signature="2175:2274" ph="SELECT mark authors" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/4.2.4.RELEASE/spring-tx-4.2.4.RELEASE.jar!/org/springframework/transaction/annotation/ProxyTransactionManagementConfiguration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.2.2.RELEASE/spring-security-config-4.2.2.RELEASE.jar!/org/springframework/security/config/annotation/method/configuration/GlobalMethodSecurityConfiguration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/config/SecurityWebApplicationInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-          <folding />
+    <entry file="das://table:/a5812921/74833286-677e-423d-8baf-8c42721cbd0a/spring_database.public.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/config/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="23" />
+        <state relative-caret-position="1738">
+          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/config/WebConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state relative-caret-position="2222">
+          <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+        <state relative-caret-position="1166">
+          <caret line="59" column="27" lean-forward="false" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/hibernate_repository/UserRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Const.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        <state relative-caret-position="990">
+          <caret line="46" column="65" lean-forward="false" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/config/RootConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/entity/Book.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="1144">
+          <caret line="59" column="36" lean-forward="false" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/services/SearchService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/RepoSpecification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/services/aspects/RepositoryAspect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+        <state relative-caret-position="697">
+          <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1504,7 +1530,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>SpringTwoWebSite:war exploded</last-edited>
+          <last-edited>SpringTwoWebSite:war</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1517,7 +1543,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Hibernate (SpringTwoWebSite)|Hibernate</last-edited>
+          <last-edited>AspectJ (SpringTwoWebSite)|AspectJ</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1553,7 +1579,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>AspectJ|SpringTwoWebSite</last-edited>
+          <last-edited>Web|SpringTwoWebSite</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1565,7 +1591,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <last-edited>Maven: org.springframework.security:spring-security-acl:4.2.2.RELEASE</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

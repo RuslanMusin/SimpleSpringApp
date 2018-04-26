@@ -84,7 +84,7 @@
 
                             <div class = "btn_wrap">
                                 <input type="hidden" id="typeMark" value="author">
-                                <input type="hidden" id="userId" name="userId" th:value="${session.user.id}">
+                                <input type="hidden" id="userId" name="userId" th:value="${user.id}">
                                 <input type="hidden" id="movieId" name="movieId" th:value="${author.id}">
                                 <input class = "mark_btn button" id="setMarkBtn" type="button" th:value="Оценить"/>
                             </div>
@@ -130,7 +130,7 @@
                 <div class="clear"></div>
             </div>
 
-            <div id = "my_review" th:with="user = ${session.user}">
+            <div id = "my_review">
 
                 <form>
 

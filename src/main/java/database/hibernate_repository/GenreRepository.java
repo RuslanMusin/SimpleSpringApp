@@ -2,6 +2,7 @@ package database.hibernate_repository;
 
 import database.entity.Country;
 import database.entity.Genre;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

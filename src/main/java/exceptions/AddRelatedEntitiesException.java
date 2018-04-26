@@ -1,6 +1,10 @@
 package exceptions;
 
-public class AddRelatedEntitiesException extends Exception {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+public class AddRelatedEntitiesException extends RuntimeException{
 
     private String type;
 

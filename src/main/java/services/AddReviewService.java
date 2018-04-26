@@ -10,6 +10,7 @@ import database.hibernate_repository.BookReviewRepository;
 import exceptions.AddReviewException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import utils.Const;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class AddReviewService {
     @Autowired
     private AuthorReviewRepository authorReviewRepository;
 
+    @Transactional
     public void addBookReview(String title, String content, String bookId, User writer) {
 
         try {
@@ -41,11 +43,11 @@ public class AddReviewService {
 
             bookReviewRepository.save(bookReview);
         } catch (Exception ex){
-            Const.sys("ex mess = " + ex.getMessage());
             throw new AddReviewException(ex.getMessage());
         }
     }
 
+    @Transactional
     public void addAuthorReview(String title, String content,String authorId, User writer) {
 
         try {
@@ -59,7 +61,7 @@ public class AddReviewService {
             authorReviewRepository.save(authorReview);
 
         } catch (Exception ex) {
-            throw new AddReviewException();
+            throw new AddReviewException(ex.getMessage());
         }
     }
 

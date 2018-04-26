@@ -21,14 +21,12 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-//@EnableTransactionManagement
-@ComponentScan(basePackages = {"database","utils","services"},excludeFilters={
-        @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE, value= UserService.class)})
-//@ComponentScan(basePackages = {"database","utils","services"})
 @EnableJpaRepositories(basePackages = {"database.hibernate_repository"})
-@PropertySource("classpath:db_properties/postgres.properties")
 @EnableAspectJAutoProxy
-@Import(SecurityConfig.class)
+@EnableTransactionManagement
+@ComponentScan(basePackages = {"database","utils","services"})
+@PropertySource("classpath:db_properties/postgres.properties")
+@Import({SecurityConfig.class})
 public class RootConfig {
 
     @Autowired

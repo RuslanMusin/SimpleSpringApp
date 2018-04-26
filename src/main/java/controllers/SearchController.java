@@ -16,88 +16,68 @@ import utils.Const;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+import static utils.Const.*;
+
+@Controller(value = "FindController")
 @PreAuthorize("isAuthenticated()")
 public class SearchController {
+
+    private static final String SEARCH_BOOKS = "/searchBooks";
+    private static final String SEARCH_AUTHORS = "/searchAuthors";
+    private static final String SEARCH_COUNTRIES = "/searchCountries";
+    private static final String SEARCH_GENRES = "/searchGenres";
+
+    private static final String NAME = "FC#";
 
     @Autowired
     private SearchService searchService;
 
-    @RequestMapping(value = "/searchBooks",method = RequestMethod.GET)
+    @RequestMapping(value = SEARCH_BOOKS,method = RequestMethod.GET)
     public String searchBooks(Model model,String query,String type,String numPage) {
-        System.out.println("showBookListGET");
         String view = "";
-
         try {
-            List<Book> books = new ArrayList<>();
+            List<Book> books;
             if (query != null && !query.trim().equals("")) {
-                System.out.println("ищем по имени");
                 books = searchService.findBookByNameCriteria(query, Integer.valueOf(numPage));
-                model.addAttribute("title", "Найденные по данному имени");
+                model.addAttribute(TITLE, "Найденные по данному имени");
             } else {
                 books = searchService.findPopularBooksCriteria(Integer.valueOf(numPage));
-                model.addAttribute("title", "Самые популярные");
+                model.addAttribute(TITLE, "Самые популярные");
             }
 
-            if (books.size() == 0) {
-                System.out.println("actors is null");
-            } else {
-                for (Book movie : books) {
-                    System.out.println(movie.getName());
-                }
-            }
-
-            model.addAttribute("books", books);
-            model.addAttribute("size", books.size());
-
+            model.addAttribute(BOOKS_ATTR, books);
+            model.addAttribute(SIZE_ATTR, books.size());
 
             switch (type) {
-                case "user":
+                case KEY_USER_TYPE:
                     view = "xml_parts/user/user_books";
                     break;
 
-                case "menu":
+                case KEY_MENU_TYPE:
                     view = "xml_parts/menu_search";
                     break;
             }
-
         } catch (Exception ex) {
             throw new SearchException(Const.KEY_BOOK_TYPE);
         }
-
         return view;
-
     }
 
-
-    @RequestMapping(value = "/searchAuthors",method = RequestMethod.GET)
+    @RequestMapping(value = SEARCH_AUTHORS,method = RequestMethod.GET)
     public String searchAuthors(Model model,@RequestParam String query,
                                  @RequestParam String type,@RequestParam String numPage) {
-        System.out.println("showBookListGET");
         String view = "";
-
         try {
-            List<Author> authors = new ArrayList<>();
+            List<Author> authors;
             if (query != null && !query.trim().equals("")) {
-                System.out.println("ищем по имени");
                 authors = searchService.findAuthorByName(query, Integer.valueOf(numPage));
-                model.addAttribute("title", "Найденные по данному имени");
+                model.addAttribute(TITLE, "Найденные по данному имени");
             } else {
                 authors = searchService.findPopularAuthors(Integer.valueOf(numPage));
-                model.addAttribute("title", "Самые популярные");
+                model.addAttribute(TITLE, "Самые популярные");
             }
-
-            if (authors.size() == 0) {
-                System.out.println("actors is null");
-            } else {
-                for (Author author : authors) {
-                    System.out.println("author =" + author.getName());
-                }
-            }
-
-            model.addAttribute("authors", authors);
-            model.addAttribute("size", authors.size());
-
+            model.addAttribute(AUTHORS_ATTR, authors);
+            model.addAttribute(SIZE_ATTR, authors.size());
 
             switch (type) {
                 case "user":
@@ -109,48 +89,33 @@ public class SearchController {
                     break;
 
             }
-
         } catch(Exception ex) {
             throw new SearchException(Const.KEY_AUTHOR_TYPE);
         }
-
         return view;
-
     }
 
-    @RequestMapping(value = "/searchCountries",method = RequestMethod.GET)
+    @RequestMapping(value = SEARCH_COUNTRIES,method = RequestMethod.GET)
     @PreAuthorize("hasRole('ADMIN')")
     public String searchCountries(Model model,@RequestParam String query) {
-        System.out.println("searchCountries");
-
         try {
             List<Country> countries = searchService.findCountriesByName(query);
-
-            model.addAttribute("countries", countries);
+            model.addAttribute(COUNTRIES_ATTR, countries);
         }catch (Exception ex){
             throw new SearchException(Const.KEY_COUNTRY_TYPE);
         }
-
         return "xml_parts/admin/countries";
-
     }
 
-    @RequestMapping(value = "/searchGenres",method = RequestMethod.GET)
+    @RequestMapping(value = SEARCH_GENRES,method = RequestMethod.GET)
     @PreAuthorize("hasRole('ADMIN')")
     public String searchGenres(Model model,@RequestParam String query) {
-        System.out.println("searchGenres");
-
         try {
             List<Genre> genres = searchService.findGenresByName(query);
-
-            model.addAttribute("genres", genres);
+            model.addAttribute(GENRES_ATTR, genres);
         } catch (Exception e){
             throw new SearchException(Const.KEY_GENRE_TYPE);
         }
-
         return "xml_parts/admin/genres";
-
     }
-
-
 }
