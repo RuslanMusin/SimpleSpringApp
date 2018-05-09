@@ -46,6 +46,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/database/entity/mark" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/database/jdbc_template" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/database/jpa_entity_manager" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/services/aspects" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
